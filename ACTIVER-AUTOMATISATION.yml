@@ -1,0 +1,85 @@
+name: Actualiser et publier FX Atlas
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '23 7 * * *'
+    - cron: '43 18 * * *'
+concurrency:
+  group: fx-atlas-pages
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    outputs:
+      collection: ${{ steps.collect.outcome }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installer le robot
+        run: python -m pip install -r requirements.txt
+      - name: Tester les calculs et la protection des donnees
+        run: |
+          python -m unittest discover -s tests -v
+          npm test
+      - name: Collecter les sources officielles
+        id: collect
+        continue-on-error: true
+        run: python -m collector.run --output web/data --timeout 25 --retries 2
+      - name: Conserver les observations et le journal
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add web/data/latest.json web/data/health.json
+          if ! git diff --staged --quiet; then
+            git commit -m "data: observations validees et rapport de collecte"
+            git push origin HEAD:main
+          fi
+      - name: Construire le site avec les valeurs valides ou conservees
+        run: npm run build
+      - name: Resumer la qualite des donnees
+        if: always()
+        run: python scripts/summary.py >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configurer Pages
+        uses: actions/configure-pages@v5
+      - name: Publier le site
+        id: deployment
+        uses: actions/deploy-pages@v4
+  quality:
+    needs: [build, deploy]
+    if: ${{ always() && needs.build.result == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echec visible si la collecte critique a echoue
+        env:
+          COLLECTION: ${{ needs.build.outputs.collection }}
+        run: |
+          if [ "$COLLECTION" != "success" ]; then
+            echo '::error::Collecte critique en echec. Seules les anciennes valeurs avec avertissements ont ete publiees. Consultez le journal.'
+            exit 1
+          fi
