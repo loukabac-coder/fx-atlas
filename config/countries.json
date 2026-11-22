@@ -1,0 +1,136 @@
+{
+  "_lisez_moi": "Liste des pays suivis. Pour ajouter un pays : copier un bloc, changer les champs, lancer le robot. Voir CLAUDE.md. Aucune valeur de marché ici : seulement des identifiants de séries et des liens officiels. Seule exception : la cible d'inflation, qui est vérifiée chaque jour sur la page officielle indiquée (champ target.check).",
+  "countries": [
+    {
+      "code": "US", "name": "États-Unis", "geo": ["USA"], "wikidata_country": "Q30",
+      "cb": "Réserve fédérale (Fed)", "currency": "USD", "fred_10y": "IRLTLT01USM156N",
+      "target": {"value": 2, "label": "2 % (PCE)", "url": "https://www.federalreserve.gov/faqs/economy_14400.htm", "check": "2 percent"},
+      "calendar": {"parser": "fed", "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"},
+      "decisions_page": "https://www.federalreserve.gov/monetarypolicy/openmarket.htm"
+    },
+    {
+      "code": "CA", "name": "Canada", "geo": ["CAN"], "wikidata_country": "Q16",
+      "cb": "Banque du Canada", "currency": "CAD", "fred_10y": "IRLTLT01CAM156N",
+      "target": {"value": 2, "label": "2 % (fourchette 1–3 %)", "url": "https://www.bankofcanada.ca/core-functions/monetary-policy/inflation/", "check": "2%"},
+      "calendar": {"parser": "boc", "url": "https://www.bankofcanada.ca/press/upcoming-events/"},
+      "official_rate": {"source": "Banque du Canada (Valet)", "series": "V39079", "url": "https://www.bankofcanada.ca/valet/observations/V39079/json?recent=5"}
+    },
+    {
+      "code": "MX", "name": "Mexique", "geo": ["MEX"], "wikidata_country": "Q96",
+      "cb": "Banco de México (Banxico)", "currency": "MXN", "fred_10y": "IRLTLT01MXM156N",
+      "target": {"value": 3, "label": "3 % (±1 pt)", "url": "https://www.banxico.org.mx/monetary-policy/inflation-target.html", "check": "3%"},
+      "calendar": {"parser": "banxico", "url": "https://www.banxico.org.mx/publications-and-press/announcements-of-monetary-policy-decisions/announcements-monetary-polic.html"}
+    },
+    {
+      "code": "BR", "name": "Brésil", "geo": ["BRA"], "wikidata_country": "Q155",
+      "cb": "Banco Central do Brasil", "currency": "BRL", "fred_10y": null,
+      "target": {"value": 3, "label": "3 % (±1,5 pt)", "url": "https://www.bcb.gov.br/en/monetarypolicy/inflationtargeting", "check": "3"},
+      "calendar": {"parser": "bcb", "url": "https://www.bcb.gov.br/api/servico/sitebcb/copom/calendarioreunioes"}
+    },
+    {
+      "code": "XM", "name": "Zone euro", "geo": ["AUT","BEL","BGR","HRV","CYP","EST","FIN","FRA","DEU","GRC","IRL","ITA","LVA","LTU","LUX","MLT","NLD","PRT","SVK","SVN","ESP"], "wikidata_org": "Q8901",
+      "cb": "Banque centrale européenne (BCE)", "currency": "EUR", "fred_10y": "IRLTLT01EZM156N",
+      "target": {"value": 2, "label": "2 % (IPCH, moyen terme)", "url": "https://www.ecb.europa.eu/mopo/strategy/html/index.en.html", "check": "2%"},
+      "calendar": {"parser": "ecb", "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html"},
+      "rate_note": "Taux de la facilité de dépôt (DFR), principal taux directeur de la BCE."
+    },
+    {
+      "code": "GB", "name": "Royaume-Uni", "geo": ["GBR"], "wikidata_country": "Q145",
+      "cb": "Banque d'Angleterre (BoE)", "currency": "GBP", "fred_10y": "IRLTLT01GBM156N",
+      "target": {"value": 2, "label": "2 % (IPC)", "url": "https://www.bankofengland.co.uk/monetary-policy/inflation", "check": "2%"},
+      "calendar": {"parser": "boe", "url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates"}
+    },
+    {
+      "code": "CH", "name": "Suisse", "geo": ["CHE"], "wikidata_country": "Q39",
+      "cb": "Banque nationale suisse (BNS)", "currency": "CHF", "fred_10y": "IRLTLT01CHM156N",
+      "target": {"value": 1, "label": "0–2 % (stabilité des prix ; écart calculé au milieu, 1 %)", "url": "https://www.snb.ch/en/the-snb/mandates-goals/monetary-policy/strategy", "check": "2%"},
+      "calendar": {"parser": "snb", "url": "https://www.snb.ch/en/ifor/media/id/media_events"}
+    },
+    {
+      "code": "SE", "name": "Suède", "geo": ["SWE"], "wikidata_country": "Q34",
+      "cb": "Riksbank", "currency": "SEK", "fred_10y": "IRLTLT01SEM156N",
+      "target": {"value": 2, "label": "2 % (IPCF)", "url": "https://www.riksbank.se/en-gb/monetary-policy/the-inflation-target/", "check": "2 per cent"},
+      "calendar": {"parser": "riksbank", "url": "https://www.riksbank.se/en-gb/press-and-published/calendar/"}
+    },
+    {
+      "code": "NO", "name": "Norvège", "geo": ["NOR"], "wikidata_country": "Q20",
+      "cb": "Norges Bank", "currency": "NOK", "fred_10y": "IRLTLT01NOM156N",
+      "target": {"value": 2, "label": "2 % (IPC)", "url": "https://www.norges-bank.no/en/topics/Monetary-policy/Mandate-monetary-policy/", "check": "2"},
+      "calendar": {"parser": "norges", "url": "https://www.norges-bank.no/en/news-events/calendar/policy-rate-decisions/"}
+    },
+    {
+      "code": "PL", "name": "Pologne", "geo": ["POL"], "wikidata_country": "Q36",
+      "cb": "Narodowy Bank Polski (NBP)", "currency": "PLN", "fred_10y": "IRLTLT01PLM156N",
+      "target": {"value": 2.5, "label": "2,5 % (±1 pt)", "url": "https://nbp.pl/en/monetary-policy/strategy/", "check": "2.5%"},
+      "calendar": {"parser": "nbp", "url": "https://nbp.pl/en/monetary-policy/schedule-of-mpc-meetings"}
+    },
+    {
+      "code": "CZ", "name": "Tchéquie", "geo": ["CZE"], "wikidata_country": "Q213",
+      "cb": "Banque nationale tchèque (ČNB)", "currency": "CZK", "fred_10y": "IRLTLT01CZM156N",
+      "target": {"value": 2, "label": "2 % (±1 pt)", "url": "https://www.cnb.cz/en/monetary-policy/inflation-target/", "check": "2%"},
+      "calendar": {"parser": "cnb", "url": "https://www.cnb.cz/en/monetary-policy/bank-board-decisions/"}
+    },
+    {
+      "code": "HU", "name": "Hongrie", "geo": ["HUN"], "wikidata_country": "Q28",
+      "cb": "Magyar Nemzeti Bank (MNB)", "currency": "HUF", "fred_10y": "IRLTLT01HUM156N",
+      "target": {"value": 3, "label": "3 % (±1 pt)", "url": "https://www.mnb.hu/en/monetary-policy/monetary-policy-framework", "check": "3"},
+      "calendar": {"parser": "mnb", "url": "https://www.mnb.hu/en/monetary-policy/the-monetary-council"}
+    },
+    {
+      "code": "TR", "name": "Turquie", "geo": ["TUR"], "wikidata_country": "Q43",
+      "cb": "Banque centrale de Turquie (CBRT)", "currency": "TRY", "fred_10y": null,
+      "target": {"value": 5, "label": "5 % (cible de moyen terme)", "url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/Core+Functions/Monetary+Policy/Inflation+Targeting", "check": "5"},
+      "calendar": {"parser": "cbrt", "url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/Core+Functions/Monetary+Policy/Monetary+Policy+Committee/Meeting+Schedule"}
+    },
+    {
+      "code": "ZA", "name": "Afrique du Sud", "geo": ["ZAF"], "wikidata_country": "Q258",
+      "cb": "South African Reserve Bank (SARB)", "currency": "ZAR", "fred_10y": "IRLTLT01ZAM156N",
+      "target": {"value": 3, "label": "3 % (±1 pt)", "url": "https://www.resbank.co.za/en/home/what-we-do/monetary-policy", "check": "3%"},
+      "calendar": {"parser": "sarb", "url": "https://www.resbank.co.za/en/home/what-we-do/monetary-policy/mpc-meeting-dates"}
+    },
+    {
+      "code": "CN", "name": "Chine", "geo": ["CHN"], "wikidata_country": "Q148",
+      "cb": "Banque populaire de Chine (PBoC)", "currency": "CNY", "fred_10y": null,
+      "target": null,
+      "target_note": "La PBoC n'a pas de cible d'inflation officielle propre (l'objectif annuel est fixé par le gouvernement).",
+      "calendar": null,
+      "calendar_note": "La PBoC ne publie pas de calendrier de réunions : ses décisions ne sont pas programmées."
+    },
+    {
+      "code": "JP", "name": "Japon", "geo": ["JPN"], "wikidata_country": "Q17",
+      "cb": "Banque du Japon (BoJ)", "currency": "JPY", "fred_10y": "IRLTLT01JPM156N",
+      "target": {"value": 2, "label": "2 % (IPC)", "url": "https://www.boj.or.jp/en/mopo/outline/target.htm", "check": "2 percent"},
+      "calendar": {"parser": "boj", "url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm"}
+    },
+    {
+      "code": "IN", "name": "Inde", "geo": ["IND"], "wikidata_country": "Q668",
+      "cb": "Reserve Bank of India (RBI)", "currency": "INR", "fred_10y": "INDIRLTLT01STM",
+      "target": {"value": 4, "label": "4 % (±2 pts)", "url": "https://www.rbi.org.in/Scripts/FAQView.aspx?Id=126", "check": "4 per cent"},
+      "calendar": {"parser": "rbi", "url": "https://website.rbi.org.in/web/rbi/monetary-policy/monetary-policy-committee"}
+    },
+    {
+      "code": "KR", "name": "Corée du Sud", "geo": ["KOR"], "wikidata_country": "Q884",
+      "cb": "Banque de Corée (BoK)", "currency": "KRW", "fred_10y": "IRLTLT01KRM156N",
+      "target": {"value": 2, "label": "2 % (IPC)", "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400014", "check": "2"},
+      "calendar": {"parser": "bok", "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400069"}
+    },
+    {
+      "code": "ID", "name": "Indonésie", "geo": ["IDN"], "wikidata_country": "Q252",
+      "cb": "Bank Indonesia (BI)", "currency": "IDR", "fred_10y": null,
+      "target": {"value": 2.5, "label": "2,5 % (±1 pt)", "url": "https://www.bi.go.id/en/fungsi-utama/moneter/inflasi/default.aspx", "check": "2.5"},
+      "calendar": {"parser": "bi", "url": "https://www.bi.go.id/en/fungsi-utama/moneter/rdg/default.aspx"}
+    },
+    {
+      "code": "AU", "name": "Australie", "geo": ["AUS"], "wikidata_country": "Q408",
+      "cb": "Reserve Bank of Australia (RBA)", "currency": "AUD", "fred_10y": "IRLTLT01AUM156N", "cpi_stale_days": 200,
+      "target": {"value": 2.5, "label": "2–3 % (écart calculé au milieu, 2,5 %)", "url": "https://www.rba.gov.au/inflation/inflation-target.html", "check": "2–3"},
+      "calendar": {"parser": "rba", "url": "https://www.rba.gov.au/schedules-events/board-meeting-schedules.html"}
+    },
+    {
+      "code": "NZ", "name": "Nouvelle-Zélande", "geo": ["NZL"], "wikidata_country": "Q664",
+      "cb": "Reserve Bank of New Zealand (RBNZ)", "currency": "NZD", "fred_10y": "IRLTLT01NZM156N", "cpi_stale_days": 200,
+      "target": {"value": 2, "label": "1–3 % (milieu : 2 %)", "url": "https://www.rbnz.govt.nz/monetary-policy/about-monetary-policy/monetary-policy-framework", "check": "2"},
+      "calendar": {"parser": "rbnz", "url": "https://www.rbnz.govt.nz/news-and-events/upcoming-events"}
+    }
+  ]
+}
