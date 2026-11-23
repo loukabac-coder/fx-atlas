@@ -1,6 +1,6 @@
 ## Journal du robot FX Atlas
 
-Données essentielles manquantes ou pas à jour : **1** (2%)
+Données essentielles manquantes ou pas à jour : **0** (0%)
 
 | Pays | Donnée | Valeur | Statut | Source | Détail |
 |---|---|---|---|---|---|
@@ -24,7 +24,7 @@ Données essentielles manquantes ou pas à jour : **1** (2%)
 | MX | dirigeant | Victoria Rodríguez Ceja | NON CONFIRMÉ | Wikidata | pages officielles injoignables |
 | MX | calendrier | 8 dates | OK | https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-d |  |
 | BR | officiel = BIS | 13.75 | OK | contrôle BIS | au 2026-11-23 |
-| BR | policy | 13.75 | REFUSÉE | Banco Central do Brasil | date plus ancienne que la valeur gardée (2026-12-09) |
+| BR | policy | 13.75 | OK | Banco Central do Brasil | date 2026-11-23 |
 | BR | cpi | 4.58 | OK | BIS (indices de prix nationaux) | date 2026-09 |
 | BR | y10 | 9.29 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | BR | cible | 3 % (±1,5 pt) | À VÉRIFIER | https://www.bcb.gov.br/en/monetarypolicy/inflationtargeting | mention introuvable |
@@ -67,13 +67,13 @@ Données essentielles manquantes ou pas à jour : **1** (2%)
 | PL | y10 | 6.32 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | PL | cible | 2,5 % (±1 pt) | À VÉRIFIER | https://nbp.pl/en/monetary-policy/strategy/ | mention introuvable |
 | PL | dirigeant | Adam Glapiński | NON CONFIRMÉ | Wikidata | pages officielles injoignables |
-| CZ | policy | 4.0 | ANCIEN | BIS (Banque des règlements internationaux) | date 2026-11-12 |
+| CZ | policy | 4.0 | OK | BIS (Banque des règlements internationaux) | date 2026-11-12 |
 | CZ | cpi | 2.5 | OK | BIS (indices de prix nationaux) | date 2026-09 |
 | CZ | y10 | 5.372491 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | CZ | cible | 2 % (±1 pt) | OK | https://www.cnb.cz/en/monetary-policy/inflation-target/ | mention « 2% target » retrouvée sur la page officielle |
 | CZ | dirigeant | Aleš Michl | OK | Wikidata + site officiel | https://www.cnb.cz/en/about_cnb/bank-board/ |
 | CZ | calendrier | 16 dates | OK | https://www.cnb.cz/en/monetary-policy/bank-board-decisions/ |  |
-| HU | policy | 5.5 | ANCIEN | BIS (Banque des règlements internationaux) | date 2026-11-11 |
+| HU | policy | 5.5 | OK | BIS (Banque des règlements internationaux) | date 2026-11-11 |
 | HU | cpi | 1.56 | OK | BIS (indices de prix nationaux) | date 2026-09 |
 | HU | y10 | 5.57 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | HU | cible | 3.0 | OK | https://www.mnb.hu/en | valeur lue sur la page officielle |
@@ -101,13 +101,13 @@ Données essentielles manquantes ou pas à jour : **1** (2%)
 | JP | cible | 2 % (IPC) | OK | https://www.boj.or.jp/en/mopo/outline/target.htm | mention « at 2 percent » retrouvée sur la page officielle |
 | JP | dirigeant | Kazuo Ueda | OK | Wikidata + site officiel | https://www.boj.or.jp/en/about/organization/policyboard/index.htm |
 | JP | calendrier | 16 dates | OK | https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm |  |
-| IN | policy | 5.5 | ANCIEN | BIS (Banque des règlements internationaux) | date 2026-10-19 |
+| IN | policy | 5.5 | OK | BIS (Banque des règlements internationaux) | date 2026-10-19 |
 | IN | cpi | 5.54 | OK | BIS (indices de prix nationaux) | date 2026-09 |
 | IN | y10 | 7.38 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | IN | cible | 4 % (±2 pts) | OK | https://www.rbi.org.in/Scripts/BS_ViewBulletin.aspx?Id=24174 | mention « 4 per cent » retrouvée sur la page officielle |
 | IN | dirigeant | Urjit Patel | NON CONFIRMÉ | Wikidata | nom absent des pages officielles vérifiées |
 | IN | calendrier | 6 dates | OK | https://www.rbi.org.in/scripts/annualpolicy.aspx |  |
-| KR | policy | 3.0 | ANCIEN | BIS (Banque des règlements internationaux) | date 2026-11-02 |
+| KR | policy | 3.0 | OK | BIS (Banque des règlements internationaux) | date 2026-11-02 |
 | KR | cpi | 2.88 | OK | BIS (indices de prix nationaux) | date 2026-09 |
 | KR | y10 | 4.21 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | KR | cible | 2 % (IPC) | OK | https://www.bok.or.kr/eng/main/contents.do?menuNo=400015 | mention « 2 percent » retrouvée sur la page officielle |
@@ -119,7 +119,7 @@ Données essentielles manquantes ou pas à jour : **1** (2%)
 | ID | dirigeant | n/d | N/D | Wikidata |  |
 | ID | calendrier | 12 dates | OK | https://www.bi.go.id/en/publikasi/kalender/default.aspx |  |
 | ID | policy | 5.75 | ANCIEN | BIS (Banque des règlements internationaux) | réunion du 2026-11-18 pas encore reflétée |
-| AU | policy | 4.85 | ANCIEN | BIS (Banque des règlements internationaux) | date 2026-11-12 |
+| AU | policy | 4.85 | OK | BIS (Banque des règlements internationaux) | date 2026-11-12 |
 | AU | cpi | 3.94 | OK | BIS (indices de prix nationaux) | date 2026-06 |
 | AU | y10 | 5.265 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | AU | cible | 2–3 % (écart calculé au milieu, 2,5 %) | OK | https://www.rba.gov.au/inflation/overview.html | mention « between 2 and 3 per cent » retrouvée sur la page officielle |
