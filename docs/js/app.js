@@ -99,7 +99,7 @@ async function init(){
   renderFresh(); renderMetricBar(); initGlobe(); renderLegend(); renderPanel();
   renderCalendar(); renderFX(); renderRank(); renderMethod();
   setupTabs(h[0]);
-  if (h[2] && S.atlas.countries[h[2]]) select(h[2]);
+  if (h[2] && S.atlas.countries[h[2]]) select(h[2], true);
   window.addEventListener('hashchange', applyHash);
 }
 function applyHash(){
@@ -126,7 +126,7 @@ function setupTabs(initial){
 function showView(v, quiet){
   document.querySelectorAll('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.view===v));
   document.querySelectorAll('section.view').forEach(s => s.classList.toggle('on', s.id==='view-'+v));
-  if (v==='globe') resizeGlobe();
+  if (S.globe){ if (v==='globe') { S.globe.resumeAnimation(); resizeGlobe(); } else S.globe.pauseAnimation(); }
   if (!quiet) updateHash(v);
 }
 function currentView(){ return document.querySelector('#tabs button.on')?.dataset.view || 'globe'; }
@@ -198,7 +198,8 @@ function initGlobe(){
   resizeGlobe();
   drawFlat(feats);
   $('#btnSpin').onclick = () => { if(!S.globe) return; const c=S.globe.controls(); c.autoRotate=!c.autoRotate; $('#btnSpin').classList.toggle('on', c.autoRotate); };
-  $('#btnFlat').onclick = () => { if(!S.globe) return; S.flat = !S.flat; $('#stage').classList.toggle('flat', S.flat); $('#btnFlat').textContent = S.flat ? 'Globe 3D' : 'Carte plate'; $('#btnFlat').classList.toggle('on', S.flat); };
+  document.addEventListener('visibilitychange', () => { if (!S.globe) return; if (document.hidden || S.flat || currentView()!=='globe') S.globe.pauseAnimation(); else S.globe.resumeAnimation(); });
+  $('#btnFlat').onclick = () => { if(!S.globe) return; S.flat = !S.flat; S.flat ? S.globe.pauseAnimation() : S.globe.resumeAnimation(); $('#stage').classList.toggle('flat', S.flat); $('#btnFlat').textContent = S.flat ? 'Globe 3D' : 'Carte plate'; $('#btnFlat').classList.toggle('on', S.flat); };
 }
 function resizeGlobe(){ if (!S.globe) return; const r = $('#stage').getBoundingClientRect(); if (r.width) S.globe.width(r.width).height(r.height); }
 function refreshColors(){
@@ -296,7 +297,7 @@ function renderPanel(){
         ${kpi('Taux directeur', pol, 'policy', {sub: range ? range+' · '+(pol.date?'au '+fmtDate(pol.date):'') : null})}
         ${kpi('Taux réel', m.real, 'real')}
         ${kpi('Inflation (1 an)', m.cpi, 'cpi')}
-        <div class="kpi" title="${esc([t.source,t.note].filter(Boolean).join(' — '))}"><div class="l">Cible d’inflation ${badge(t.status)}</div><div class="v" style="font-size:15px">${t.label?esc(t.label):'n/d'}</div><div class="d">${t.url?`<a href="${esc(t.url)}" target="_blank" rel="noopener">source officielle</a>`:esc(t.note||'')}</div></div>
+        <div class="kpi" title="${esc([t.source,t.note].filter(Boolean).join(' — '))}"><div class="l">Cible d’inflation ${badge(t.status)}</div><div class="v tlabel">${t.label?esc(t.label):'n/d'}</div><div class="d">${t.url?`<a href="${esc(t.url)}" target="_blank" rel="noopener">source officielle</a>`:esc(t.note||'')}</div></div>
         ${kpi('Inflation gap', m.gap, 'gap')}
         ${kpi('Δ taux sur 12 mois', m.policy_12m, 'policy_12m')}
         ${kpi('Écart vs taux US', m.carry_usd, 'carry_usd')}
@@ -380,7 +381,7 @@ function fxForCountry(ccy){
   return `<div class="muted">${lines.join(' · ')}</div>
     <div class="src" style="margin:4px 0 8px">Taux de référence BCE du ${fmtDate(date)} (fixé vers 16 h, heure de Francfort)</div>
     <div class="muted" style="font-size:12px;margin-bottom:4px">Performance de la ${ccy} face au ${base==='USD'?'dollar':'euro'} (positif = ${ccy} plus forte)</div>
-    <div class="kpis" style="grid-template-columns:repeat(5,1fr)">${cells}</div>`;
+    <div class="kpis fxperf">${cells}</div>`;
 }
 
 function renderFX(){
@@ -431,7 +432,7 @@ function renderFX(){
 }
 
 // ---------- calendrier ----------
-function decText(d){ if (!d) return 'n/d'; return d.type==='hausse'?`<span class="dec hausse">Hausse ${d.bp} pb</span>`:d.type==='baisse'?`<span class="dec baisse">Baisse ${Math.abs(d.bp)} pb</span>`:d.type==='maintien'?'<span class="dec maintien">Maintien</span>':'<span class="faint">non déduite</span>'; }
+function decText(d){ if (!d) return 'n/d'; return d.type==='hausse'?`<span class="dec hausse">Hausse ${d.bp} pb</span>`:d.type==='baisse'?`<span class="dec baisse">Baisse ${Math.abs(d.bp)} pb</span>`:d.type==='maintien'?'<span class="dec maintien">Maintien</span>':(d.note?'<span class="faint">en attente de la série officielle</span>':'<span class="faint">non déduite</span>'); }
 function renderCalendar(){
   const C = Object.values(S.atlas.countries);
   const next = C.map(c => ({c, d:c.meetings?.next?.date})).sort((a,b) => (a.d||'9999') < (b.d||'9999') ? -1 : 1);
@@ -440,12 +441,12 @@ function renderCalendar(){
     <div class="card"><h2>Prochaines réunions</h2><div class="sub">Dates de décision tirées des calendriers officiels. « non publiée » : la banque centrale n’a pas encore publié la date.</div>
       <div class="tbl-wrap"><table class="t"><thead><tr><th>Date</th><th></th><th>Banque centrale</th><th class="r">Taux actuel</th><th>Ensuite</th></tr></thead><tbody>
       ${next.map(({c,d}) => `<tr class="click" data-c="${c.code}"><td class="num">${d?fmtDate(d):(c.meetings?.status==='aucun'?'<span class="faint">pas de calendrier</span>':'<span class="faint">non publiée</span>')}</td>
-        <td class="count">${d?countdown(d):''}</td><td><b>${esc(c.name)}</b> <span class="faint">${esc(c.cb)}</span> ${badge(c.meetings?.status==='pas_a_jour'?'pas_a_jour':null)}</td>
+        <td class="count">${d?countdown(d):''}</td><td class="w"><b>${esc(c.name)}</b> <span class="faint">${esc(c.cb)}</span> ${badge(c.meetings?.status==='pas_a_jour'?'pas_a_jour':null)}</td>
         <td class="r num">${fmtVal(c.metrics.policy?.value,'%')}</td><td class="faint num">${(c.meetings?.upcoming||[]).slice(1,3).map(fmtDate).join(' · ')}</td></tr>`).join('')}
       </tbody></table></div></div>
     <div class="card"><h2>Dernières décisions</h2><div class="sub">Décision déduite de la série officielle du taux (changement entré en vigueur dans les 10 jours après la réunion).</div>
       <div class="tbl-wrap"><table class="t"><thead><tr><th>Date</th><th>Banque centrale</th><th>Décision</th><th class="r">Nouveau taux</th></tr></thead><tbody>
-      ${last.map(c => `<tr class="click" data-c="${c.code}"><td class="num">${fmtDate(c.meetings.last.date)}</td><td><b>${esc(c.name)}</b> <span class="faint">${esc(c.cb)}</span></td>
+      ${last.map(c => `<tr class="click" data-c="${c.code}"><td class="num">${fmtDate(c.meetings.last.date)}</td><td class="w"><b>${esc(c.name)}</b> <span class="faint">${esc(c.cb)}</span></td>
         <td>${decText(c.meetings.last.decision)}</td><td class="r num">${c.meetings.last.decision?.new!=null?fmtVal(c.meetings.last.decision.new,'%'):'n/d'}</td></tr>`).join('')}
       </tbody></table></div></div></div>`;
   $('#view-calendar').querySelectorAll('tr.click').forEach(tr => tr.onclick = () => select(tr.dataset.c, true));
