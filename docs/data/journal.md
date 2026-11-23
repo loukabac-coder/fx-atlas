@@ -30,8 +30,8 @@ Données essentielles manquantes ou pas à jour : **0** (0%)
 | BR | cible | 3 % (±1,5 pt) | À VÉRIFIER | https://www.bcb.gov.br/en/monetarypolicy/inflationtargeting | mention introuvable |
 | BR | dirigeant | Roberto Campos Neto | NON CONFIRMÉ | Wikidata | nom absent des pages officielles vérifiées |
 | BR | calendrier | 11 dates | OK | https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados |  |
-| XM | officiel = BIS | 2.5 | OK | contrôle BIS | au 2026-11-22 |
-| XM | policy | 2.5 | OK | BCE | date 2026-11-22 |
+| XM | officiel = BIS | 2.5 | OK | contrôle BIS | au 2026-11-23 |
+| XM | policy | 2.5 | OK | BCE | date 2026-11-23 |
 | XM | cpi | 3.77 | OK | BIS (indices de prix nationaux) | date 2026-09 |
 | XM | y10 | 4.173788 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | XM | cible | 2 % (IPCH, moyen terme) | OK | https://www.ecb.europa.eu/mopo/strategy/html/index.en.html | mention « aiming for 2% inflation » retrouvée sur la page officielle |
@@ -120,7 +120,7 @@ Données essentielles manquantes ou pas à jour : **0** (0%)
 | ID | calendrier | 12 dates | OK | https://www.bi.go.id/en/publikasi/kalender/default.aspx |  |
 | ID | policy | 5.75 | ANCIEN | BIS (Banque des règlements internationaux) | réunion du 2026-11-18 pas encore reflétée |
 | AU | policy | 4.85 | OK | BIS (Banque des règlements internationaux) | date 2026-11-12 |
-| AU | cpi | 3.94 | OK | BIS (indices de prix nationaux) | date 2026-06 |
+| AU | cpi | 3.94 | ANCIEN | BIS (indices de prix nationaux) | date 2026-06 |
 | AU | y10 | 5.265 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | AU | cible | 2–3 % (écart calculé au milieu, 2,5 %) | OK | https://www.rba.gov.au/inflation/overview.html | mention « between 2 and 3 per cent » retrouvée sur la page officielle |
 | AU | dirigeant | Michele Bullock | OK | Wikidata + site officiel | https://www.rba.gov.au/ |
