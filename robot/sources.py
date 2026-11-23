@@ -97,6 +97,20 @@ def boc_valet(series, n=10):
     return out, r.url
 
 
+def boc_valet_range(series, start):
+    r = get(VALET.format(series=series), params={"start_date": start})
+    data = r.json()
+    out = []
+    for o in data.get("observations", []):
+        v = _num((o.get(series) or {}).get("v"))
+        if v is not None:
+            out.append((o["d"], v))
+    out.sort()
+    if not out:
+        raise ValueError("Valet : aucune observation")
+    return out, f"https://www.bankofcanada.ca/valet/observations/{series}/json"
+
+
 GOVERNOR_QUERY = """
 SELECT ?country ?bank ?bankLabel ?head ?headLabel ?start WHERE {
   VALUES ?country { %s }

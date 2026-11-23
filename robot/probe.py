@@ -2,7 +2,6 @@
 et les enregistre dans probe_out/ pour écrire et tester les lecteurs.
 Ne sert pas au site."""
 import datetime as dt
-import hashlib
 import json
 import os
 import sys
@@ -37,18 +36,27 @@ extra = json.load(open(os.path.join(os.path.dirname(__file__), "probe_extra.json
 urls.update(extra)
 
 summary = {}
-for name, url in urls.items():
+
+
+def one(item):
+    name, url = item
     try:
         r = get(url, browser=True, tries=2, timeout=40)
         body = r.content
-        ext = "json" if "json" in r.headers.get("content-type", "") else ("csv" if "csv" in r.headers.get("content-type", "") or url.endswith("csv") or "format=csv" in url else "html")
+        ct = r.headers.get("content-type", "")
+        ext = "json" if "json" in ct else ("csv" if ("csv" in ct or "format=csv" in url or "fredgraph" in url) else "html")
         fn = f"{name}.{ext}"
         open(os.path.join(OUT, fn), "wb").write(body)
-        summary[name] = {"url": url, "ok": True, "status": r.status_code, "bytes": len(body),
-                         "final_url": r.url, "file": fn, "sha": hashlib.sha1(body).hexdigest()[:8]}
+        return name, {"url": url, "ok": True, "bytes": len(body), "final_url": r.url, "file": fn}
     except Exception as e:  # noqa: BLE001
-        summary[name] = {"url": url, "ok": False, "error": str(e)[:300]}
-    print(name, summary[name].get("ok"), summary[name].get("bytes") or summary[name].get("error"))
+        return name, {"url": url, "ok": False, "error": str(e)[:300]}
+
+
+from concurrent.futures import ThreadPoolExecutor  # noqa: E402
+with ThreadPoolExecutor(8) as ex:
+    for name, res in ex.map(one, urls.items()):
+        summary[name] = res
+        print(name, res.get("ok"), res.get("bytes") or res.get("error"))
 
 # Wikidata (gouverneurs)
 try:
