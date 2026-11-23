@@ -71,9 +71,7 @@
     "url": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/anuncios-politica-monetaria-t.html"
    },
    "wikidata_bank": "Q806208",
-   "governor_check": [
-    "https://www.banxico.org.mx/"
-   ],
+   "governor_check": [],
    "oecd": "MEX"
   },
   {
@@ -194,7 +192,7 @@
    },
    "wikidata_bank": "Q597394",
    "governor_check": [
-    "https://www.snb.ch/en/"
+    "https://www.snb.ch/en/the-snb/organisation/supervisory-management-boards"
    ],
    "oecd": "CHE"
   },
@@ -219,7 +217,7 @@
    },
    "wikidata_bank": "Q564652",
    "governor_check": [
-    "https://www.riksbank.se/en-gb/"
+    "https://www.riksbank.se/en-gb/about-the-riksbank/organisation/the-executive-board/"
    ],
    "oecd": "SWE"
   },
@@ -244,7 +242,7 @@
    },
    "wikidata_bank": "Q970769",
    "governor_check": [
-    "https://www.norges-bank.no/en/"
+    "https://www.norges-bank.no/en/topics/about/Organisation/The-Executive-Board/"
    ],
    "oecd": "NOR"
   },
@@ -315,7 +313,7 @@
    },
    "wikidata_bank": "Q774636",
    "governor_check": [
-    "https://www.mnb.hu/en/"
+    "https://www.mnb.hu/en/pressroom/press-releases/press-releases-{year}"
    ],
    "oecd": "HUN"
   },
@@ -340,7 +338,7 @@
    },
    "wikidata_bank": "Q580829",
    "governor_check": [
-    "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/"
+    "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/Announcements/Remarks+by+Governor/{year}"
    ],
    "oecd": null
   },

@@ -31,7 +31,7 @@ function fmtVal(v, unit, signed=false, d=2){
   const s = (signed && v>0 ? '+' : '') + fmtNum(v,d);
   return unit==='pt' ? s+' pt' : s+' %';
 }
-function fmtMetric(key, v){ const m=M[key]; return fmtVal(v, m.unit, m.scale==='div'); }
+function fmtMetric(key, v){ const m=M[key]; return fmtVal(v==null?v:Math.round(v*100)/100, m.unit, m.scale==='div'); }
 function fmtDate(s){
   if (!s) return 'n/d';
   const p = s.split('-');
@@ -262,23 +262,27 @@ function renderPanel(){
   const pol = m.policy || {};
   const range = pol.range ? `fourchette ${fmtNum(pol.range[0])}–${fmtNum(pol.range[1])} %` : null;
   let meetHTML;
-  if (mt.status==='aucun') meetHTML = `<p class="muted">${esc(mt.note||'Pas de calendrier publié.')}</p>`;
+  const LC = mt.last_change;
+  const lcHTML = LC ? `<div class="src" style="margin-top:6px">Dernier changement du taux : <b>${LC.bp>0?'+':''}${LC.bp} pb</b> → ${fmtNum(LC.new)} % (en vigueur le ${fmtDate(LC.date)}).</div>` : '';
+  if (mt.status==='aucun') meetHTML = `<p class="muted" style="margin:0">${esc(mt.note||'Pas de calendrier publié.')}</p>${lcHTML}`;
   else {
     const L = mt.last, N = mt.next || {};
     const dec = L?.decision || {};
-    const decTxt = !L ? 'n/d' : dec.type==='hausse' ? `Hausse de ${dec.bp} pb` : dec.type==='baisse' ? `Baisse de ${Math.abs(dec.bp)} pb` : dec.type==='maintien' ? 'Maintien' : 'Décision non déduite';
+    const decTxt = !L ? 'non lue sur la page officielle' : dec.type==='hausse' ? `Hausse de ${dec.bp} pb` : dec.type==='baisse' ? `Baisse de ${Math.abs(dec.bp)} pb` : dec.type==='maintien' ? 'Maintien' : (dec.note ? 'Décision pas encore dans la série officielle' : 'Décision non déduite');
     meetHTML = `<div class="meet">
-      <div class="kpi"><div class="l">Dernière réunion ${badge(mt.status)}</div><div class="v">${L?fmtDate(L.date):'n/d'}</div>
+      <div class="kpi"><div class="l">Dernière réunion ${badge(mt.status==='pas_a_jour'?'pas_a_jour':null)}</div><div class="v">${L?fmtDate(L.date):'n/d'}</div>
         <div class="d"><span class="dec ${dec.type||''}">${esc(decTxt)}</span>${dec.new!=null?` → ${fmtNum(dec.new)} %`:''}</div></div>
       <div class="kpi"><div class="l">Prochaine réunion</div><div class="v">${N.date?fmtDate(N.date):'non publiée'}</div>
         <div class="d"><span class="count">${N.date?countdown(N.date):''}</span></div></div></div>
+      ${lcHTML}
+      ${mt.note?`<div class="src" style="margin-top:4px">${esc(mt.note)}</div>`:''}
       <div class="src" style="margin-top:6px">Calendrier : <a href="${esc(mt.source)}" target="_blank" rel="noopener">page officielle</a>${mt.checked?` · lu le ${fmtDate(mt.checked)}`:''}. Décision déduite de la série officielle du taux.</div>`;
   }
   const fxv = fxForCountry(c.currency);
   P.innerHTML = `<div class="panel-head">
       <h2>${esc(c.name)} <span class="ccy">${esc(c.currency)}</span></h2>
       <div class="cb">${esc(c.cb)}</div>
-      <div class="gov">Dirigeant : ${g.name?`<a href="${esc(g.url)}" target="_blank" rel="noopener">${esc(g.name)}</a>`:'n/d'}${g.since?` · depuis ${fmtDate(g.since)}`:''} ${badge(g.status)}</div>
+      <div class="gov" title="${esc(g.note||g.source||'')}">Dirigeant : ${g.name?`<a href="${esc(g.check_url||g.url)}" target="_blank" rel="noopener">${esc(g.name)}</a>`:'n/d <span class="faint">(nom non confirmé par une page officielle)</span>'}${g.since?` · depuis ${fmtDate(g.since)}`:''} ${badge(g.status)}</div>
     </div>
     <div class="panel-body">
       <div class="block"><h3>Taux &amp; inflation</h3><div class="kpis">

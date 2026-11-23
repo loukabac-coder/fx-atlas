@@ -270,6 +270,8 @@ def build_country(c, state, bis_rates, bis_url, official, us_range, cpi_series, 
     # --- taux directeur ---
     series, cand = None, None
     o = official.get(code)
+    if o:
+        o = dict(o, series=[x for x in o["series"] if x[0] <= iso(TODAY)])
     b = bis_rates.get(code)
     if o and o["series"]:
         series = o["series"]
@@ -394,6 +396,24 @@ def build_country(c, state, bis_rates, bis_url, official, us_range, cpi_series, 
     # --- réunions ---
     meetings = build_meetings(c, state, series)
 
+    # Fraîcheur du taux : la valeur est à jour si aucune réunion n'a eu lieu depuis sa date
+    pol = metrics["policy"]
+    if pol.get("value") is not None and pol.get("status") in ("ok", "ancien") and pol.get("date"):
+        last_m = (meetings.get("last") or {}).get("date")
+        age = days_old(pol["date"])
+        if last_m and pol["date"] < last_m and (TODAY - dt.date.fromisoformat(last_m)).days >= 2:
+            pol["status"] = "ancien"
+            pol["note"] = f"La source n'a pas encore publié de valeur postérieure à la réunion du {last_m}."
+            log(code, pol.get("source", ""), "policy", pol["value"], "ANCIEN", f"réunion du {last_m} pas encore reflétée")
+        elif last_m or meetings.get("status") == "aucun":
+            limit = 45 if last_m else 21
+            if age is not None and age > limit:
+                pol["status"] = "ancien"
+                pol["note"] = f"Dernière valeur publiée par la source : {pol['date']}."
+            else:
+                pol["status"] = "ok"
+                pol.pop("note", None)
+
     return ({"code": code, "name": c["name"], "geo": c["geo"], "cb": c["cb"], "currency": c["currency"],
              "governor": governor, "target": target, "metrics": metrics, "meetings": meetings}, hist)
 
@@ -404,25 +424,39 @@ def _norm(t):
     return "".join(ch for ch in t if not unicodedata.combining(ch)).lower()
 
 
+def name_on_page(name, txt):
+    """Vrai si tous les mots du nom (3 lettres et plus) apparaissent ensemble (à moins de 40 caractères)."""
+    toks = [t for t in re.split(r"[\s\-.,]+", _norm(name)) if len(t) >= 3]
+    if not toks:
+        return False
+    main = max(toks, key=len)
+    for m in re.finditer(r"\b" + re.escape(main) + r"\b", txt):
+        win = txt[max(0, m.start() - 40): m.end() + 40]
+        if all(re.search(r"\b" + re.escape(t) + r"\b", win) for t in toks):
+            return True
+    return False
+
+
 def pick_governor(code, c, rows, state):
     """Candidats Wikidata (mandats sans date de fin, du plus récent au plus ancien),
     retenus seulement si le nom figure sur une page officielle de la banque centrale."""
     prev = state["governors"].get(code)
     pages = []
     for u in c.get("governor_check", []):
+        u = u.replace("{year}", str(TODAY.year))
         t = safe(f"page dirigeant {code}", S.page_text, u)
         if t:
             pages.append((u, _norm(t[0])))
     if rows:
-        rows = sorted(rows, key=lambda r: r.get("start") or "", reverse=True)
+        # mandats sans date de début = données historiques incomplètes dans Wikidata : écartés
+        rows = sorted([r for r in rows if r.get("start")], key=lambda r: r["start"], reverse=True)
         seen = set()
         for r in rows:
             name = r.get("head") or ""
             if name in seen or not name or name.startswith("Q"):
                 continue
             seen.add(name)
-            toks = [t for t in re.split(r"[\s\-.,]+", _norm(name)) if len(t) >= 4]
-            hit = next((u for u, txt in pages if toks and any(re.search(r"\b" + re.escape(t) + r"\b", txt) for t in toks)), None)
+            hit = next((u for u, txt in pages if name_on_page(name, txt)), None)
             if hit:
                 g = {"name": name, "since": r.get("start"), "source": "Wikidata, nom confirmé sur le site de la banque centrale",
                      "url": f"https://www.wikidata.org/wiki/{r['head_qid']}", "check_url": hit, "status": "ok", "checked": iso(TODAY)}
@@ -432,7 +466,7 @@ def pick_governor(code, c, rows, state):
                     log(code, "Wikidata + site officiel", "dirigeant", name, "OK", hit)
                 state["governors"][code] = g
                 return g
-        log(code, "Wikidata", "dirigeant", rows[0].get("head"), "NON CONFIRMÉ",
+        log(code, "Wikidata", "dirigeant", rows[0].get("head") if rows else None, "NON CONFIRMÉ",
             "nom absent des pages officielles vérifiées" if pages else "pages officielles injoignables")
         if prev and not pages:
             return dict(prev, status="pas_a_jour")
