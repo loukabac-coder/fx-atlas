@@ -14,7 +14,7 @@ const METRICS = [
   {key:'fx_ytd',     label:'Devise vs USD depuis le 1er janvier', short:'Devise vs USD (YTD)', unit:'%', scale:'div', desc:'Variation de la devise face au dollar depuis le dernier fixing de l’an dernier. Positif = la devise s’est appréciée.'},
 ];
 const M = Object.fromEntries(METRICS.map(m => [m.key, m]));
-const SEQ = ['#1d2a6b','#43308f','#7d2f91','#b83b7f','#e45d5d','#f58c3f','#fbc04f','#fde98a'];
+const SEQ = ['#3a3f9a','#5a38a3','#8a3596','#c2417d','#e8635a','#f7903f','#fbbf4f','#fde98a'];
 const DIV = ['#1f5fa8','#3f86c4','#8cb9dd','#dcd8cf','#f2a585','#d9604c','#ad1f2c'];
 const COL_NODATA = '#3a4252', COL_OUT = '#18202e';
 const MONTHS = ['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
@@ -100,6 +100,13 @@ async function init(){
   renderCalendar(); renderFX(); renderRank(); renderMethod();
   setupTabs(h[0]);
   if (h[2] && S.atlas.countries[h[2]]) select(h[2]);
+  window.addEventListener('hashchange', applyHash);
+}
+function applyHash(){
+  const h = location.hash.slice(1).split('/');
+  if (M[h[1]] && h[1] !== S.metric) setMetric(h[1]);
+  if (h[2] && S.atlas.countries[h[2]] && h[2] !== S.sel) { select(h[2], true); return; }
+  if (h[0] && $('#view-'+h[0])) showView(h[0], true);
 }
 
 function renderFresh(){
@@ -123,7 +130,7 @@ function showView(v, quiet){
   if (!quiet) updateHash(v);
 }
 function currentView(){ return document.querySelector('#tabs button.on')?.dataset.view || 'globe'; }
-function updateHash(v){ history.replaceState(null,'','#'+[v||currentView(), S.metric, S.sel||''].join('/').replace(/\/$/,'')); }
+function updateHash(v){ const h='#'+[v||currentView(), S.metric, S.sel||''].join('/').replace(/\/$/,''); if (location.hash!==h) history.replaceState(null,'',h); }
 
 // ---------- barre des métriques & légende ----------
 function renderMetricBar(){

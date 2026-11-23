@@ -118,7 +118,7 @@ def accept_metric(kind, code, cand, state, extra=None):
         rec = dict(cand)
         age = days_old(cand.get("date"))
         lim = (extra or {}).get("stale", STALE[kind])
-        if age is not None and age > lim:
+        if kind != "policy" and age is not None and age > lim:  # taux directeur : fraîcheur jugée d'après les réunions
             rec["status"] = "ancien"
             rec["note"] = f"Dernière valeur publiée par la source : {cand['date']} (il y a {age} jours)."
             log(code, cand["source"], kind, cand["value"], "ANCIEN", f"date {cand['date']}")
@@ -144,6 +144,10 @@ def main():
     state = load_json(os.path.join(DATA, "state.json"), {"good": {}, "pending": {}, "calendars": {}, "governors": {}})
     for k in ("good", "pending", "calendars", "governors", "history"):
         state.setdefault(k, {})
+    # Garde-fou : une valeur gardée avec une date future est forcément une erreur -> oubliée
+    for k in [k for k, v in state["good"].items() if isinstance(v, dict) and (v.get("date") or "") > iso(TODAY)]:
+        print(f"État : valeur à date future écartée ({k} {state['good'][k].get('date')})")
+        state["good"].pop(k)
     start_hist = iso(TODAY - dt.timedelta(days=365 * 3 + 400))
 
     # ---------- 1. Taux directeurs (BIS) ----------
