@@ -24,14 +24,9 @@ ccys = sorted({c["currency"] for c in C} - {"EUR"})
 urls["ecb_fx"] = f"https://data-api.ecb.europa.eu/service/data/EXR/D.{'+'.join(ccys)}.EUR.SP00.A?startPeriod={start}&format=csvdata"
 urls["ecb_dfr"] = f"https://data-api.ecb.europa.eu/service/data/FM/D.U2.EUR.4F.KR.DFR.LEV?startPeriod={start}&format=csvdata"
 urls["valet"] = "https://www.bankofcanada.ca/valet/observations/V39079/json?recent=5"
-for s in ["DFEDTARU", "DFEDTARL"] + [c["fred_10y"] for c in C if c.get("fred_10y")] + \
-         ["IRLTLT01BRM156N", "IRLTLT01TRM156N", "IRLTLT01CNM156N", "IRLTLT01IDM156N", "IRLTLT01INM156N"]:
-    urls["fred_" + s] = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={s}&cosd=2025-01-01"
 for c in C:
     if c.get("calendar"):
         urls[f"cal_{c['code']}"] = c["calendar"]["url"]
-    if c.get("target"):
-        urls[f"target_{c['code']}"] = c["target"]["url"]
 extra = json.load(open(os.path.join(os.path.dirname(__file__), "probe_extra.json"), encoding="utf-8"))
 urls.update(extra)
 
@@ -44,7 +39,7 @@ def one(item):
         r = get(url, browser=True, tries=2, timeout=40)
         body = r.content
         ct = r.headers.get("content-type", "")
-        ext = "json" if "json" in ct else ("csv" if ("csv" in ct or "format=csv" in url or "fredgraph" in url) else "html")
+        ext = "pdf" if "pdf" in ct else "json" if "json" in ct else ("csv" if ("csv" in ct or "format=csv" in url or "fredgraph" in url) else "html")
         fn = f"{name}.{ext}"
         open(os.path.join(OUT, fn), "wb").write(body)
         return name, {"url": url, "ok": True, "bytes": len(body), "final_url": r.url, "file": fn}

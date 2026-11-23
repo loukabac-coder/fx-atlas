@@ -1,0 +1,39 @@
+name: Mise à jour quotidienne des données
+on:
+  schedule:
+    - cron: "17 5 * * *"    # vers 6 h 17 à Paris (heure d'hiver) : taux et inflation de la nuit
+    - cron: "47 15 * * 1-5" # après le fixing BCE (vers 16 h à Francfort) : taux de change du jour
+  workflow_dispatch:         # bouton « Run workflow » pour lancer à la main
+permissions:
+  contents: write
+concurrency:
+  group: fx-atlas-data
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r robot/requirements.txt
+      - name: Tests du robot
+        run: python -m unittest discover -s tests -v
+      - name: Robot (lecture des sources, contrôles, journal)
+        id: robot
+        continue-on-error: true
+        run: python robot/update.py
+      - name: Publier les données (même partielles : la dernière bonne valeur est toujours gardée)
+        run: |
+          git config user.name "fx-atlas-robot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data
+          git commit -m "Données du $(date -u +%Y-%m-%d) ($(date -u +%H:%M) UTC)" || echo "Aucun changement"
+          git pull --rebase -q origin "$GITHUB_REF_NAME" || true
+          git push origin "HEAD:$GITHUB_REF_NAME"
+      - name: Échec visible si trop de données manquent
+        if: steps.robot.outcome == 'failure'
+        run: |
+          echo "::error::Le robot signale trop de données manquantes ou une erreur. Voir le journal ci-dessus et docs/data/journal.md."
+          exit 1

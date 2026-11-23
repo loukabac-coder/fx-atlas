@@ -20,7 +20,7 @@ class Resp:
         self.headers = r.headers
         self.url = r.url
         self.content = content
-        self.encoding = r.encoding or r.apparent_encoding or "utf-8"
+        self.encoding = r.encoding or "utf-8"
 
     @property
     def text(self):

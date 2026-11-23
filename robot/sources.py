@@ -115,8 +115,9 @@ GOVERNOR_QUERY = """
 SELECT ?country ?bank ?bankLabel ?head ?headLabel ?start WHERE {
   VALUES ?country { %s }
   ?bank wdt:P31 wd:Q66344 ; wdt:P17 ?country .
-  ?bank wdt:P2388 ?pos .
-  ?head p:P39 ?st . ?st ps:P39 ?pos .
+  { ?bank wdt:P2388 ?pos . ?head p:P39 ?st . ?st ps:P39 ?pos . }
+  UNION { ?bank p:P488 ?st . ?st ps:P488 ?head . }
+  UNION { ?bank p:P1037 ?st . ?st ps:P1037 ?head . }
   FILTER NOT EXISTS { ?st pq:P582 ?end }
   OPTIONAL { ?st pq:P580 ?start }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "fr,en". }
@@ -125,8 +126,9 @@ SELECT ?country ?bank ?bankLabel ?head ?headLabel ?start WHERE {
 GOVERNOR_QUERY_ORG = """
 SELECT ?bank ?bankLabel ?head ?headLabel ?start WHERE {
   VALUES ?bank { %s }
-  ?bank wdt:P2388 ?pos .
-  ?head p:P39 ?st . ?st ps:P39 ?pos .
+  { ?bank wdt:P2388 ?pos . ?head p:P39 ?st . ?st ps:P39 ?pos . }
+  UNION { ?bank p:P488 ?st . ?st ps:P488 ?head . }
+  UNION { ?bank p:P1037 ?st . ?st ps:P1037 ?head . }
   FILTER NOT EXISTS { ?st pq:P582 ?end }
   OPTIONAL { ?st pq:P580 ?start }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "fr,en". }
