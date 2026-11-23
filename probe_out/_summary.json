@@ -34,139 +34,12 @@
   "final_url": "https://www.bankofcanada.ca/valet/observations/V39079/json?recent=5",
   "file": "valet.json"
  },
- "fred_DFEDTARU": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFEDTARU&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFEDTARU&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_DFEDTARL": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFEDTARL&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFEDTARL&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01USM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01USM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01USM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01CAM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01CAM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01CAM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01MXM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01MXM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01MXM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01EZM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01EZM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01EZM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01GBM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01GBM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01GBM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01CHM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01CHM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01CHM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01SEM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01SEM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01SEM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01NOM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01NOM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01NOM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01PLM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01PLM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01PLM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01CZM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01CZM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01CZM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01HUM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01HUM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01HUM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01ZAM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01ZAM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01ZAM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01JPM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01JPM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01JPM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_INDIRLTLT01STM": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=INDIRLTLT01STM&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=INDIRLTLT01STM&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01KRM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01KRM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01KRM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01AUM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01AUM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01AUM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01NZM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01NZM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01NZM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01BRM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01BRM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01BRM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01TRM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01TRM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01TRM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01CNM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01CNM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01CNM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01IDM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01IDM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01IDM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "fred_IRLTLT01INM156N": {
-  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01INM156N&cosd=2025-01-01",
-  "ok": false,
-  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01INM156N&cosd=2025-01-01 -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
  "cal_US": {
   "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
   "ok": true,
   "bytes": 166359,
   "final_url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
   "file": "cal_US.html"
- },
- "target_US": {
-  "url": "https://www.federalreserve.gov/faqs/economy_14400.htm",
-  "ok": true,
-  "bytes": 84061,
-  "final_url": "https://www.federalreserve.gov/faqs/economy_14400.htm",
-  "file": "target_US.html"
  },
  "cal_CA": {
   "url": "https://www.bankofcanada.ca/press/upcoming-events/",
@@ -175,34 +48,15 @@
   "final_url": "https://www.bankofcanada.ca/press/upcoming-events/",
   "file": "cal_CA.html"
  },
- "target_CA": {
-  "url": "https://www.bankofcanada.ca/core-functions/monetary-policy/inflation/",
-  "ok": true,
-  "bytes": 159074,
-  "final_url": "https://www.bankofcanada.ca/core-functions/monetary-policy/inflation/",
-  "file": "target_CA.html"
- },
  "cal_MX": {
   "url": "https://www.banxico.org.mx/publications-and-press/announcements-of-monetary-policy-decisions/announcements-monetary-polic.html",
   "ok": false,
   "error": "https://www.banxico.org.mx/publications-and-press/announcements-of-monetary-policy-decisions/announcements-monetary-polic.html -> HTTP 404"
  },
- "target_MX": {
-  "url": "https://www.banxico.org.mx/monetary-policy/inflation-target.html",
-  "ok": false,
-  "error": "https://www.banxico.org.mx/monetary-policy/inflation-target.html -> HTTP 404"
- },
  "cal_BR": {
   "url": "https://www.bcb.gov.br/api/servico/sitebcb/copom/calendarioreunioes",
   "ok": false,
   "error": "https://www.bcb.gov.br/api/servico/sitebcb/copom/calendarioreunioes -> HTTP 500"
- },
- "target_BR": {
-  "url": "https://www.bcb.gov.br/en/monetarypolicy/inflationtargeting",
-  "ok": true,
-  "bytes": 2871,
-  "final_url": "https://www.bcb.gov.br/en/monetarypolicy/inflationtargeting",
-  "file": "target_BR.html"
  },
  "cal_XM": {
   "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
@@ -211,26 +65,12 @@
   "final_url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
   "file": "cal_XM.html"
  },
- "target_XM": {
-  "url": "https://www.ecb.europa.eu/mopo/strategy/html/index.en.html",
-  "ok": true,
-  "bytes": 102258,
-  "final_url": "https://www.ecb.europa.eu/mopo/strategy/html/index.en.html",
-  "file": "target_XM.html"
- },
  "cal_GB": {
   "url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates",
   "ok": true,
   "bytes": 83398,
   "final_url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates",
   "file": "cal_GB.html"
- },
- "target_GB": {
-  "url": "https://www.bankofengland.co.uk/monetary-policy/inflation",
-  "ok": true,
-  "bytes": 83601,
-  "final_url": "https://www.bankofengland.co.uk/monetary-policy/inflation",
-  "file": "target_GB.html"
  },
  "cal_CH": {
   "url": "https://www.snb.ch/en/ifor/media/id/media_events",
@@ -239,26 +79,12 @@
   "final_url": "https://www.snb.ch/en/services-events/digital-services/event-schedule",
   "file": "cal_CH.html"
  },
- "target_CH": {
-  "url": "https://www.snb.ch/en/the-snb/mandates-goals/monetary-policy/strategy",
-  "ok": true,
-  "bytes": 95181,
-  "final_url": "https://www.snb.ch/en/the-snb/mandates-goals/monetary-policy/strategy",
-  "file": "target_CH.html"
- },
  "cal_SE": {
   "url": "https://www.riksbank.se/en-gb/press-and-published/calendar/",
   "ok": true,
   "bytes": 609213,
   "final_url": "https://www.riksbank.se/en-gb/press-and-published/calendar/",
   "file": "cal_SE.html"
- },
- "target_SE": {
-  "url": "https://www.riksbank.se/en-gb/monetary-policy/the-inflation-target/",
-  "ok": true,
-  "bytes": 489743,
-  "final_url": "https://www.riksbank.se/en-gb/monetary-policy/the-inflation-target/",
-  "file": "target_SE.html"
  },
  "cal_NO": {
   "url": "https://www.norges-bank.no/en/news-events/calendar/policy-rate-decisions/",
@@ -267,26 +93,12 @@
   "final_url": "https://www.norges-bank.no/en/news-events/calendar/?selectedFacets%5bType%5d=145879",
   "file": "cal_NO.html"
  },
- "target_NO": {
-  "url": "https://www.norges-bank.no/en/topics/Monetary-policy/Mandate-monetary-policy/",
-  "ok": true,
-  "bytes": 63081,
-  "final_url": "https://www.norges-bank.no/en/topics/monetary-policy/monetary-policy-strategy/",
-  "file": "target_NO.html"
- },
  "cal_PL": {
   "url": "https://nbp.pl/en/monetary-policy/schedule-of-mpc-meetings",
   "ok": true,
   "bytes": 5996,
   "final_url": "https://nbp.pl/en/monetary-policy/schedule-of-mpc-meetings",
   "file": "cal_PL.html"
- },
- "target_PL": {
-  "url": "https://nbp.pl/en/monetary-policy/strategy/",
-  "ok": true,
-  "bytes": 5996,
-  "final_url": "https://nbp.pl/en/monetary-policy/strategy/",
-  "file": "target_PL.html"
  },
  "cal_CZ": {
   "url": "https://www.cnb.cz/en/monetary-policy/bank-board-decisions/",
@@ -295,13 +107,6 @@
   "final_url": "https://www.cnb.cz/en/monetary-policy/bank-board-decisions/",
   "file": "cal_CZ.html"
  },
- "target_CZ": {
-  "url": "https://www.cnb.cz/en/monetary-policy/inflation-target/",
-  "ok": true,
-  "bytes": 59361,
-  "final_url": "https://www.cnb.cz/en/monetary-policy/inflation-target/",
-  "file": "target_CZ.html"
- },
  "cal_HU": {
   "url": "https://www.mnb.hu/en/monetary-policy/the-monetary-council",
   "ok": true,
@@ -309,34 +114,15 @@
   "final_url": "https://www.mnb.hu/en/monetary-policy/the-monetary-council",
   "file": "cal_HU.html"
  },
- "target_HU": {
-  "url": "https://www.mnb.hu/en/monetary-policy/monetary-policy-framework",
-  "ok": true,
-  "bytes": 264128,
-  "final_url": "https://www.mnb.hu/en/monetary-policy/monetary-policy-framework",
-  "file": "target_HU.html"
- },
  "cal_TR": {
   "url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/Core+Functions/Monetary+Policy/Monetary+Policy+Committee/Meeting+Schedule",
   "ok": false,
-  "error": "The content for this response was already consumed"
- },
- "target_TR": {
-  "url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/Core+Functions/Monetary+Policy/Inflation+Targeting",
-  "ok": false,
-  "error": "The content for this response was already consumed"
+  "error": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/Core+Functions/Monetary+Policy/Monetary+Policy+Committee/Meeting+Schedule -> HTTP 404"
  },
  "cal_ZA": {
   "url": "https://www.resbank.co.za/en/home/what-we-do/monetary-policy/mpc-meeting-dates",
   "ok": false,
   "error": "https://www.resbank.co.za/en/home/what-we-do/monetary-policy/mpc-meeting-dates -> HTTP 404"
- },
- "target_ZA": {
-  "url": "https://www.resbank.co.za/en/home/what-we-do/monetary-policy",
-  "ok": true,
-  "bytes": 101812,
-  "final_url": "https://www.resbank.co.za/en/home/what-we-do/monetary-policy",
-  "file": "target_ZA.html"
  },
  "cal_JP": {
   "url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm",
@@ -345,38 +131,17 @@
   "final_url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm",
   "file": "cal_JP.html"
  },
- "target_JP": {
-  "url": "https://www.boj.or.jp/en/mopo/outline/target.htm",
-  "ok": true,
-  "bytes": 37593,
-  "final_url": "https://www.boj.or.jp/en/mopo/outline/target.htm",
-  "file": "target_JP.html"
- },
  "cal_IN": {
   "url": "https://website.rbi.org.in/web/rbi/monetary-policy/monetary-policy-committee",
   "ok": true,
-  "bytes": 154675,
+  "bytes": 154669,
   "final_url": "https://www.rbi.org.in/",
   "file": "cal_IN.html"
- },
- "target_IN": {
-  "url": "https://www.rbi.org.in/Scripts/FAQView.aspx?Id=126",
-  "ok": true,
-  "bytes": 152965,
-  "final_url": "https://www.rbi.org.in/Scripts/FAQView.aspx?Id=126",
-  "file": "target_IN.html"
  },
  "cal_KR": {
   "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400069",
   "ok": false,
   "error": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400069 -> HTTP 404"
- },
- "target_KR": {
-  "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400014",
-  "ok": true,
-  "bytes": 545823,
-  "final_url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400014",
-  "file": "target_KR.html"
  },
  "cal_ID": {
   "url": "https://www.bi.go.id/en/fungsi-utama/moneter/rdg/default.aspx",
@@ -385,13 +150,6 @@
   "final_url": "https://www.bi.go.id/id/e404.aspx",
   "file": "cal_ID.html"
  },
- "target_ID": {
-  "url": "https://www.bi.go.id/en/fungsi-utama/moneter/inflasi/default.aspx",
-  "ok": true,
-  "bytes": 642441,
-  "final_url": "https://www.bi.go.id/en/fungsi-utama/moneter/inflasi/default.aspx",
-  "file": "target_ID.html"
- },
  "cal_AU": {
   "url": "https://www.rba.gov.au/schedules-events/board-meeting-schedules.html",
   "ok": true,
@@ -399,192 +157,340 @@
   "final_url": "https://www.rba.gov.au/schedules-events/board-meeting-schedules.html",
   "file": "cal_AU.html"
  },
- "target_AU": {
-  "url": "https://www.rba.gov.au/inflation/inflation-target.html",
-  "ok": true,
-  "bytes": 463,
-  "final_url": "https://www.rba.gov.au/inflation/",
-  "file": "target_AU.html"
- },
  "cal_NZ": {
   "url": "https://www.rbnz.govt.nz/news-and-events/upcoming-events",
   "ok": false,
   "error": "https://www.rbnz.govt.nz/news-and-events/upcoming-events -> HTTP 403"
  },
- "target_NZ": {
-  "url": "https://www.rbnz.govt.nz/monetary-policy/about-monetary-policy/monetary-policy-framework",
+ "fred_single": {
+  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFEDTARU",
   "ok": false,
-  "error": "https://www.rbnz.govt.nz/monetary-policy/about-monetary-policy/monetary-policy-framework -> HTTP 403"
+  "error": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFEDTARU -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
  },
- "alt_boc_schedule": {
-  "url": "https://www.bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/",
+ "fred_api_alt": {
+  "url": "https://fred.stlouisfed.org/data/DFEDTARU.txt",
+  "ok": false,
+  "error": "https://fred.stlouisfed.org/data/DFEDTARU.txt -> ReadTimeout: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
+ },
+ "oecd_finmark": {
+  "url": "https://sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_FINMARK,4.0/all?startPeriod=2026-06&dimensionAtObservation=AllDimensions&format=csvfilewithlabels",
   "ok": true,
-  "bytes": 151976,
-  "final_url": "https://www.bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/",
-  "file": "alt_boc_schedule.html"
+  "bytes": 439382,
+  "final_url": "https://sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_FINMARK,4.0/all?startPeriod=2026-06&dimensionAtObservation=AllDimensions&format=csvfilewithlabels",
+  "file": "oecd_finmark.csv"
  },
- "alt_banxico_cal_es": {
+ "bcb_sgs432": {
+  "url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/5?formato=json",
+  "ok": true,
+  "bytes": 191,
+  "final_url": "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/5?formato=json",
+  "file": "bcb_sgs432.json"
+ },
+ "bcb_atas": {
+  "url": "https://www.bcb.gov.br/api/servico/sitebcb/copom/atas?quantidade=3",
+  "ok": true,
+  "bytes": 392,
+  "final_url": "https://www.bcb.gov.br/api/servico/sitebcb/copom/atas?quantidade=3",
+  "file": "bcb_atas.json"
+ },
+ "bcb_comunicados": {
+  "url": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=3",
+  "ok": true,
+  "bytes": 375,
+  "final_url": "https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados?quantidade=3",
+  "file": "bcb_comunicados.json"
+ },
+ "bcb_cal1": {
+  "url": "https://www.bcb.gov.br/api/servico/sitebcb/copom/calendario",
+  "ok": false,
+  "error": "https://www.bcb.gov.br/api/servico/sitebcb/copom/calendario -> HTTP 500"
+ },
+ "bcb_cal2": {
+  "url": "https://www.bcb.gov.br/api/servico/sitebcb/agendaeventos/copom",
+  "ok": false,
+  "error": "https://www.bcb.gov.br/api/servico/sitebcb/agendaeventos/copom -> HTTP 400"
+ },
+ "bcb_cal3": {
+  "url": "https://www.bcb.gov.br/api/servico/sitebcb/copom/reunioes",
+  "ok": false,
+  "error": "https://www.bcb.gov.br/api/servico/sitebcb/copom/reunioes -> HTTP 500"
+ },
+ "boe_iadb": {
+  "url": "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom=01/Jan/2026&Dateto=now&SeriesCodes=IUDBEDR&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N",
+  "ok": true,
+  "bytes": 4031,
+  "final_url": "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom=01/Jan/2026&Dateto=now&SeriesCodes=IUDBEDR&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N",
+  "file": "boe_iadb.csv"
+ },
+ "tr_calendar": {
+  "url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/Announcements/Calendar",
+  "ok": true,
+  "bytes": 32234,
+  "final_url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/Announcements/Calendar",
+  "file": "tr_calendar.html"
+ },
+ "tr_target": {
+  "url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/Core+Functions/Monetary+Policy/Central+Bank+Monetary+Policy+Framework",
+  "ok": true,
+  "bytes": 60493,
+  "final_url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/Core+Functions/Monetary+Policy/Central+Bank+Monetary+Policy+Framework",
+  "file": "tr_target.html"
+ },
+ "in_annualpolicy": {
+  "url": "https://www.rbi.org.in/scripts/annualpolicy.aspx",
+  "ok": true,
+  "bytes": 78486,
+  "final_url": "https://www.rbi.org.in/scripts/annualpolicy.aspx",
+  "file": "in_annualpolicy.html"
+ },
+ "au_cal_mone": {
+  "url": "https://www.rba.gov.au/schedules-events/calendar/?topics=mone",
+  "ok": true,
+  "bytes": 231825,
+  "final_url": "https://www.rba.gov.au/schedules-events/calendar/?topics=mone",
+  "file": "au_cal_mone.html"
+ },
+ "au_decisions": {
+  "url": "https://www.rba.gov.au/monetary-policy/int-rate-decisions/",
+  "ok": true,
+  "bytes": 27760,
+  "final_url": "https://www.rba.gov.au/monetary-policy/int-rate-decisions/",
+  "file": "au_decisions.html"
+ },
+ "au_mr_dates": {
+  "url": "https://www.rba.gov.au/media-releases/2025/mr-25-02.html",
+  "ok": true,
+  "bytes": 24043,
+  "final_url": "https://www.rba.gov.au/media-releases/2025/mr-25-02.html",
+  "file": "au_mr_dates.html"
+ },
+ "kr_meeting_dates": {
+  "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400020",
+  "ok": true,
+  "bytes": 555232,
+  "final_url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400020",
+  "file": "kr_meeting_dates.html"
+ },
+ "kr_home": {
+  "url": "https://www.bok.or.kr/eng/main/main.do",
+  "ok": true,
+  "bytes": 584031,
+  "final_url": "https://www.bok.or.kr/eng/main/main.do",
+  "file": "kr_home.html"
+ },
+ "id_kalender_en": {
+  "url": "https://www.bi.go.id/en/publikasi/kalender/default.aspx",
+  "ok": true,
+  "bytes": 2200863,
+  "final_url": "https://www.bi.go.id/en/publikasi/kalender/default.aspx",
+  "file": "id_kalender_en.html"
+ },
+ "id_kalender_id": {
+  "url": "https://www.bi.go.id/id/publikasi/kalender/default.aspx",
+  "ok": true,
+  "bytes": 3122583,
+  "final_url": "https://www.bi.go.id/id/publikasi/kalender/default.aspx",
+  "file": "id_kalender_id.html"
+ },
+ "mx_announce_es": {
   "url": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/anuncios-politica-monetaria-t.html",
   "ok": true,
   "bytes": 205547,
   "final_url": "https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-de-las-decisiones-de-politica-monetaria/anuncios-politica-monetaria-t.html",
-  "file": "alt_banxico_cal_es.html"
+  "file": "mx_announce_es.html"
  },
- "alt_banxico_calendar": {
-  "url": "https://www.banxico.org.mx/publications-and-press/monetary-policy-announcements-calendar/monetary-policy-announcements-calendar.html",
+ "mx_cal_pdf": {
+  "url": "https://www.banxico.org.mx/politica-monetaria/d/{3B4BDA5B-E7E8-E414-2066-DA0CB3F7C36F}.pdf",
+  "ok": true,
+  "bytes": 204020,
+  "final_url": "https://www.banxico.org.mx/politica-monetaria/d/%7B3B4BDA5B-E7E8-E414-2066-DA0CB3F7C36F%7D.pdf",
+  "file": "mx_cal_pdf.pdf"
+ },
+ "mx_target_es": {
+  "url": "https://www.banxico.org.mx/politica-monetaria/inflacion/objetivo-inflacion.html",
   "ok": false,
-  "error": "https://www.banxico.org.mx/publications-and-press/monetary-policy-announcements-calendar/monetary-policy-announcements-calendar.html -> HTTP 404"
+  "error": "https://www.banxico.org.mx/politica-monetaria/inflacion/objetivo-inflacion.html -> HTTP 404"
  },
- "alt_bcb_copom_en": {
-  "url": "https://www.bcb.gov.br/en/monetarypolicy/copomcalendars",
-  "ok": true,
-  "bytes": 2871,
-  "final_url": "https://www.bcb.gov.br/en/monetarypolicy/copomcalendars",
-  "file": "alt_bcb_copom_en.html"
- },
- "alt_bcb_api_agenda": {
-  "url": "https://www.bcb.gov.br/api/servico/sitebcb/agendaCopom",
+ "nz_home": {
+  "url": "https://www.rbnz.govt.nz/",
   "ok": false,
-  "error": "https://www.bcb.gov.br/api/servico/sitebcb/agendaCopom -> HTTP 400"
+  "error": "https://www.rbnz.govt.nz/ -> HTTP 403"
  },
- "alt_bcb_copom_pt": {
-  "url": "https://www.bcb.gov.br/controleinflacao/calendarioreunioescopom",
-  "ok": true,
-  "bytes": 2871,
-  "final_url": "https://www.bcb.gov.br/controleinflacao/calendarioreunioescopom",
-  "file": "alt_bcb_copom_pt.html"
- },
- "alt_snb_decisions": {
-  "url": "https://www.snb.ch/en/the-snb/mandates-goals/monetary-policy/decisions",
-  "ok": true,
-  "bytes": 255030,
-  "final_url": "https://www.snb.ch/en/the-snb/mandates-goals/monetary-policy/decisions",
-  "file": "alt_snb_decisions.html"
- },
- "alt_riks_2026": {
-  "url": "https://www.riksbank.se/en-gb/press-and-published/calendar/calendar-2026/",
-  "ok": true,
-  "bytes": 610268,
-  "final_url": "https://www.riksbank.se/en-gb/press-and-published/calendar/calendar-2026/",
-  "file": "alt_riks_2026.html"
- },
- "alt_riks_2027": {
-  "url": "https://www.riksbank.se/en-gb/press-and-published/calendar/calendar-2027/",
-  "ok": true,
-  "bytes": 669515,
-  "final_url": "https://www.riksbank.se/en-gb/press-and-published/calendar/calendar-2027/",
-  "file": "alt_riks_2027.html"
- },
- "alt_riks_decisions": {
-  "url": "https://www.riksbank.se/en-gb/monetary-policy/monetary-policy-report/",
-  "ok": true,
-  "bytes": 492884,
-  "final_url": "https://www.riksbank.se/en-gb/monetary-policy/monetary-policy-report/",
-  "file": "alt_riks_decisions.html"
- },
- "alt_cnb_board": {
-  "url": "https://www.cnb.cz/en/about_cnb/bank-board/",
-  "ok": true,
-  "bytes": 69953,
-  "final_url": "https://www.cnb.cz/en/about_cnb/bank-board/",
-  "file": "alt_cnb_board.html"
- },
- "alt_mnb_2026": {
-  "url": "https://www.mnb.hu/en/pressroom/press-releases/press-releases-2025/the-monetary-council-s-meetings-2026",
-  "ok": true,
-  "bytes": 229743,
-  "final_url": "https://www.mnb.hu/en/pressroom/press-releases/press-releases-2025/the-monetary-council-s-meetings-2026",
-  "file": "alt_mnb_2026.html"
- },
- "alt_cbrt_schedule": {
-  "url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/Announcements/Monetary+Policy+Committee+Meeting+Schedule",
-  "ok": false,
-  "error": "The content for this response was already consumed"
- },
- "alt_sarb_mpc": {
-  "url": "https://www.resbank.co.za/en/home/what-we-do/monetary-policy/monetary-policy-committee",
-  "ok": true,
-  "bytes": 92140,
-  "final_url": "https://www.resbank.co.za/en/home/what-we-do/monetary-policy/monetary-policy-committee",
-  "file": "alt_sarb_mpc.html"
- },
- "alt_sarb_cal": {
-  "url": "https://www.resbank.co.za/en/home/publications/calendar",
-  "ok": false,
-  "error": "https://www.resbank.co.za/en/home/publications/calendar -> HTTP 404"
- },
- "alt_rbi_home": {
-  "url": "https://www.rbi.org.in/",
-  "ok": true,
-  "bytes": 154675,
-  "final_url": "https://www.rbi.org.in/",
-  "file": "alt_rbi_home.html"
- },
- "alt_bok_sched": {
-  "url": "https://www.bok.or.kr/eng/singl/newsDataEng/list.do?menuNo=400423",
-  "ok": true,
-  "bytes": 562430,
-  "final_url": "https://www.bok.or.kr/eng/singl/newsDataEng/list.do?menuNo=400423",
-  "file": "alt_bok_sched.html"
- },
- "alt_bi_rdg": {
-  "url": "https://www.bi.go.id/en/fungsi-utama/moneter/bi-rate/default.aspx",
-  "ok": true,
-  "bytes": 627995,
-  "final_url": "https://www.bi.go.id/en/fungsi-utama/moneter/bi-rate/default.aspx",
-  "file": "alt_bi_rdg.html"
- },
- "alt_rba_sched": {
-  "url": "https://www.rba.gov.au/schedules-events/",
-  "ok": true,
-  "bytes": 26591,
-  "final_url": "https://www.rba.gov.au/schedules-events/",
-  "file": "alt_rba_sched.html"
- },
- "alt_rbnz_ocr": {
+ "nz_ocr": {
   "url": "https://www.rbnz.govt.nz/monetary-policy/official-cash-rate-decisions",
   "ok": false,
   "error": "https://www.rbnz.govt.nz/monetary-policy/official-cash-rate-decisions -> HTTP 403"
  },
- "alt_rbnz_mps": {
-  "url": "https://www.rbnz.govt.nz/monetary-policy/monetary-policy-statement",
-  "ok": false,
-  "error": "https://www.rbnz.govt.nz/monetary-policy/monetary-policy-statement -> HTTP 403"
- },
- "alt_boj_sched": {
-  "url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm/",
+ "pl_schedule": {
+  "url": "https://nbp.pl/en/monetary-policy/schedule-of-mpc-meetings",
   "ok": true,
-  "bytes": 42437,
-  "final_url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm",
-  "file": "alt_boj_sched.html"
+  "bytes": 5996,
+  "final_url": "https://nbp.pl/en/monetary-policy/schedule-of-mpc-meetings",
+  "file": "pl_schedule.html"
  },
- "alt_ecb_mpd": {
+ "cz_2027": {
+  "url": "https://www.cnb.cz/en/cnb-news/news/Dates-of-the-CNB-Boards-meetings-in-2027/",
+  "ok": true,
+  "bytes": 64132,
+  "final_url": "https://www.cnb.cz/en/cnb-news/news/Dates-of-the-CNB-Boards-meetings-in-2027/",
+  "file": "cz_2027.html"
+ },
+ "cz_board": {
+  "url": "https://www.cnb.cz/en/about_cnb/bank-board/",
+  "ok": true,
+  "bytes": 69953,
+  "final_url": "https://www.cnb.cz/en/about_cnb/bank-board/",
+  "file": "cz_board.html"
+ },
+ "za_mpc": {
+  "url": "https://www.resbank.co.za/en/home/what-we-do/monetary-policy/monetary-policy-committee",
+  "ok": true,
+  "bytes": 92140,
+  "final_url": "https://www.resbank.co.za/en/home/what-we-do/monetary-policy/monetary-policy-committee",
+  "file": "za_mpc.html"
+ },
+ "za_target": {
+  "url": "https://www.resbank.co.za/en/home/what-we-do/monetary-policy",
+  "ok": true,
+  "bytes": 101812,
+  "final_url": "https://www.resbank.co.za/en/home/what-we-do/monetary-policy",
+  "file": "za_target.html"
+ },
+ "ecb_decisions": {
   "url": "https://www.ecb.europa.eu/press/govcdec/mopo/html/index.en.html",
   "ok": true,
   "bytes": 100647,
   "final_url": "https://www.ecb.europa.eu/press/govcdec/mopo/html/index.en.html",
-  "file": "alt_ecb_mpd.html"
+  "file": "ecb_decisions.html"
  },
- "alt_fed_openmarket": {
-  "url": "https://www.federalreserve.gov/monetarypolicy/openmarket.htm",
+ "lead_US": {
+  "url": "https://www.federalreserve.gov/aboutthefed/bios/board/default.htm",
   "ok": true,
-  "bytes": 106396,
-  "final_url": "https://www.federalreserve.gov/monetarypolicy/openmarket.htm",
-  "file": "alt_fed_openmarket.html"
+  "bytes": 80608,
+  "final_url": "https://www.federalreserve.gov/aboutthefed/bios/board/default.htm",
+  "file": "lead_US.html"
  },
- "alt_boe_bankrate": {
-  "url": "https://www.bankofengland.co.uk/boeapps/database/Bank-Rate.asp",
+ "lead_CA": {
+  "url": "https://www.bankofcanada.ca/about/governance-documents/governing-council/",
   "ok": true,
-  "bytes": 59930,
-  "final_url": "https://www.bankofengland.co.uk/boeapps/database/Bank-Rate.asp",
-  "file": "alt_boe_bankrate.html"
+  "bytes": 177338,
+  "final_url": "https://www.bankofcanada.ca/about/governing-council/",
+  "file": "lead_CA.html"
  },
- "alt_norges_meetings": {
-  "url": "https://www.norges-bank.no/en/topics/Monetary-policy/Monetary-policy-meetings/",
+ "lead_MX": {
+  "url": "https://www.banxico.org.mx/acerca-del-banco-de-mexico/junta-de-gobierno.html",
+  "ok": false,
+  "error": "https://www.banxico.org.mx/acerca-del-banco-de-mexico/junta-de-gobierno.html -> HTTP 404"
+ },
+ "lead_BR": {
+  "url": "https://www.bcb.gov.br/en/about/bcbmembers",
   "ok": true,
-  "bytes": 28767,
-  "final_url": "https://www.norges-bank.no/en/topics/Monetary-policy/Monetary-policy-meetings/",
-  "file": "alt_norges_meetings.html"
+  "bytes": 2871,
+  "final_url": "https://www.bcb.gov.br/en/about/bcbmembers",
+  "file": "lead_BR.html"
+ },
+ "lead_XM": {
+  "url": "https://www.ecb.europa.eu/ecb/orga/decisions/eb/html/index.en.html",
+  "ok": true,
+  "bytes": 104692,
+  "final_url": "https://www.ecb.europa.eu/ecb/decisions/eb/html/index.en.html",
+  "file": "lead_XM.html"
+ },
+ "lead_GB": {
+  "url": "https://www.bankofengland.co.uk/about/people/court-of-directors",
+  "ok": true,
+  "bytes": 92266,
+  "final_url": "https://www.bankofengland.co.uk/about/people/court-of-directors",
+  "file": "lead_GB.html"
+ },
+ "lead_CH": {
+  "url": "https://www.snb.ch/en/the-snb/organisation/governing-board",
+  "ok": false,
+  "error": "https://www.snb.ch/en/the-snb/organisation/governing-board -> HTTP 404"
+ },
+ "lead_SE": {
+  "url": "https://www.riksbank.se/en-gb/about-the-riksbank/the-executive-board/",
+  "ok": false,
+  "error": "https://www.riksbank.se/en-gb/about-the-riksbank/the-executive-board/ -> HTTP 404"
+ },
+ "lead_NO": {
+  "url": "https://www.norges-bank.no/en/about/organisation/executive-board/",
+  "ok": false,
+  "error": "https://www.norges-bank.no/en/about/organisation/executive-board/ -> HTTP 404"
+ },
+ "lead_PL": {
+  "url": "https://nbp.pl/en/about-nbp/governor-of-narodowy-bank-polski/",
+  "ok": true,
+  "bytes": 5996,
+  "final_url": "https://nbp.pl/en/about-nbp/governor-of-narodowy-bank-polski/",
+  "file": "lead_PL.html"
+ },
+ "lead_CZ": {
+  "url": "https://www.cnb.cz/en/about_cnb/bank-board/",
+  "ok": true,
+  "bytes": 69953,
+  "final_url": "https://www.cnb.cz/en/about_cnb/bank-board/",
+  "file": "lead_CZ.html"
+ },
+ "lead_HU": {
+  "url": "https://www.mnb.hu/en/the-central-bank/executives",
+  "ok": false,
+  "error": "https://www.mnb.hu/en/the-central-bank/executives -> HTTP 404"
+ },
+ "lead_TR": {
+  "url": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/About+The+Bank/Organization/Governor",
+  "ok": false,
+  "error": "https://www.tcmb.gov.tr/wps/wcm/connect/EN/TCMB+EN/Main+Menu/About+The+Bank/Organization/Governor -> HTTP 404"
+ },
+ "lead_ZA": {
+  "url": "https://www.resbank.co.za/en/home/about-us/governors",
+  "ok": false,
+  "error": "https://www.resbank.co.za/en/home/about-us/governors -> HTTP 404"
+ },
+ "lead_CN": {
+  "url": "http://www.pbc.gov.cn/en/3688006/index.html",
+  "ok": true,
+  "bytes": 106595,
+  "final_url": "https://www.pbc.gov.cn/en/3688006/index.html",
+  "file": "lead_CN.html"
+ },
+ "lead_JP": {
+  "url": "https://www.boj.or.jp/en/about/organization/policyboard/index.htm",
+  "ok": true,
+  "bytes": 46716,
+  "final_url": "https://www.boj.or.jp/en/about/organization/policyboard/index.htm",
+  "file": "lead_JP.html"
+ },
+ "lead_IN": {
+  "url": "https://www.rbi.org.in/scripts/AboutUsDisplay.aspx?pg=Governors.htm",
+  "ok": true,
+  "bytes": 166807,
+  "final_url": "https://www.rbi.org.in/scripts/AboutUsDisplay.aspx?pg=Governors.htm",
+  "file": "lead_IN.html"
+ },
+ "lead_KR": {
+  "url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400242",
+  "ok": true,
+  "bytes": 547109,
+  "final_url": "https://www.bok.or.kr/eng/main/contents.do?menuNo=400242",
+  "file": "lead_KR.html"
+ },
+ "lead_ID": {
+  "url": "https://www.bi.go.id/en/tentang-bi/profil/dewan-gubernur/default.aspx",
+  "ok": true,
+  "bytes": 611745,
+  "final_url": "https://www.bi.go.id/id/e404.aspx",
+  "file": "lead_ID.html"
+ },
+ "lead_AU": {
+  "url": "https://www.rba.gov.au/about-rba/boards/monetary-policy-board/members.html",
+  "ok": false,
+  "error": "https://www.rba.gov.au/about-rba/boards/monetary-policy-board/members.html -> HTTP 404"
+ },
+ "lead_NZ": {
+  "url": "https://www.rbnz.govt.nz/about-us/our-people/governor-and-executive",
+  "ok": false,
+  "error": "https://www.rbnz.govt.nz/about-us/our-people/governor-and-executive -> HTTP 403"
  },
  "wikidata": {
   "ok": true
