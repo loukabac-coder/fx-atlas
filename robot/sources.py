@@ -111,6 +111,76 @@ def boc_valet_range(series, start):
     return out, f"https://www.bankofcanada.ca/valet/observations/{series}/json"
 
 
+def boe_bank_rate(start):
+    """Bank Rate officiel (base de données de la Banque d'Angleterre, série IUDBEDR)."""
+    import datetime as dt
+    d0 = dt.date.fromisoformat(start).strftime("%d/%b/%Y")
+    r = get("https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp",
+            params={"csv.x": "yes", "Datefrom": d0, "Dateto": "now", "SeriesCodes": "IUDBEDR",
+                    "CSVF": "TN", "UsingCodes": "Y", "VPD": "Y", "VFD": "N"}, browser=True)
+    out = []
+    for row in csv.reader(io.StringIO(r.text)):
+        if len(row) >= 2:
+            v = _num(row[1])
+            try:
+                d = dt.datetime.strptime(row[0].strip(), "%d %b %Y").date().isoformat()
+            except ValueError:
+                continue
+            if v is not None:
+                out.append((d, v))
+    out.sort()
+    if not out:
+        raise ValueError("BoE IADB : aucune observation")
+    return out, "https://www.bankofengland.co.uk/boeapps/database/Bank-Rate.asp"
+
+
+def bcb_selic(start):
+    """Taux Selic cible officiel (API SGS de la Banque centrale du Brésil, série 432)."""
+    import datetime as dt
+    d0 = dt.date.fromisoformat(start)
+    out = []
+    # l'API limite les séries quotidiennes à 10 ans par requête : 3 ans et demi suffisent
+    r = get("https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados",
+            params={"formato": "json", "dataInicial": d0.strftime("%d/%m/%Y")})
+    for o in r.json():
+        v = _num(o.get("valor"))
+        try:
+            d = dt.datetime.strptime(o["data"], "%d/%m/%Y").date().isoformat()
+        except (KeyError, ValueError):
+            continue
+        if v is not None:
+            out.append((d, v))
+    out.sort()
+    if not out:
+        raise ValueError("BCB SGS 432 : aucune observation")
+    return out, "https://www3.bcb.gov.br/sgspub/ (série 432)"
+
+
+def nyfed_range():
+    """Fourchette cible des Fed funds publiée par la Fed de New York avec l'EFFR."""
+    r = get("https://markets.newyorkfed.org/api/rates/unsecured/effr/last/1.json")
+    o = r.json()["refRates"][0]
+    return float(o["targetRateFrom"]), float(o["targetRateTo"]), o["effectiveDate"]
+
+
+def oecd_10y(iso3, start_month):
+    """Taux d'intérêt à long terme (10 ans) mensuels, OCDE (DF_FINMARK, mesure IRLT)."""
+    url = ("https://sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_FINMARK,4.0/all")
+    r = get(url, params={"startPeriod": start_month, "dimensionAtObservation": "AllDimensions",
+                         "format": "csvfilewithlabels"}, timeout=90)
+    out = {}
+    for row in csv.DictReader(io.StringIO(r.text)):
+        if row.get("MEASURE") != "IRLT" or row.get("FREQ") != "M":
+            continue
+        a = row.get("REF_AREA")
+        v = _num(row.get("OBS_VALUE"))
+        if a in iso3 and v is not None:
+            out.setdefault(a, []).append((row["TIME_PERIOD"], v))
+    for a in out:
+        out[a].sort()
+    return out, "https://data-explorer.oecd.org/ (DF_FINMARK, IRLT)"
+
+
 GOVERNOR_QUERY = """
 SELECT ?country ?bank ?bankLabel ?head ?headLabel ?start WHERE {
   VALUES ?country { %s }
@@ -147,7 +217,7 @@ def _qid(b, k):
 
 
 def wikidata_governors(country_qids, org_qids):
-    """Renvoie {qid pays ou organisation: [ {bank, head, start}, ...]}"""
+    """Renvoie {qid de la banque: [ {bank, head, start}, ...]} (org_qids = QID des banques)."""
     out = {}
     if country_qids:
         q = GOVERNOR_QUERY % " ".join("wd:" + c for c in country_qids)

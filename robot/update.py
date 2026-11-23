@@ -151,21 +151,21 @@ def main():
     bis_rates, bis_url = bis if bis else ({}, None)
     # Sources officielles directes (prioritaires quand elles répondent)
     official = {}
-    v = safe("Banque du Canada V39079", S.boc_valet_range, "V39079", start_hist) if hasattr(S, "boc_valet_range") else None
+    v = safe("Banque du Canada V39079", S.boc_valet_range, "V39079", start_hist)
     if v:
         official["CA"] = {"series": v[0], "url": v[1], "source": "Banque du Canada", "id": "Valet V39079"}
     v = safe("BCE FM DFR", S.ecb_dfr, start_hist)
     if v and v[0]:
-        official["XM"] = {"series": v[0], "url": v[1], "source": "BCE", "id": "FM.D.U2.EUR.4F.KR.DFR.LEV"}
-    up = safe("FRED DFEDTARU", S.fred, "DFEDTARU", start_hist)
-    lo = safe("FRED DFEDTARL", S.fred, "DFEDTARL", start_hist)
-    us_range = None
-    if up and lo and up[0] and lo[0]:
-        lo_d = dict(lo[0])
-        mid = [(d, (u + lo_d[d]) / 2) for d, u in up[0] if d in lo_d]
-        official["US"] = {"series": mid, "url": "https://fred.stlouisfed.org/series/DFEDTARU",
-                          "source": "Réserve fédérale (via FRED)", "id": "DFEDTARU / DFEDTARL (milieu de fourchette)"}
-        us_range = (lo[0][-1][1], up[0][-1][1], up[0][-1][0])
+        official["XM"] = {"series": v[0], "url": "https://data.ecb.europa.eu/data/datasets/FM/FM.D.U2.EUR.4F.KR.DFR.LEV",
+                          "source": "BCE", "id": "FM.D.U2.EUR.4F.KR.DFR.LEV"}
+    v = safe("Banque d'Angleterre IUDBEDR", S.boe_bank_rate, start_hist)
+    if v:
+        official["GB"] = {"series": v[0], "url": v[1], "source": "Banque d'Angleterre", "id": "IADB IUDBEDR"}
+    v = safe("BCB SGS 432", S.bcb_selic, start_hist)
+    if v:
+        official["BR"] = {"series": v[0], "url": "https://www.bcb.gov.br/controleinflacao/historicotaxasjuros",
+                          "source": "Banco Central do Brasil", "id": "SGS 432 (Selic cible)"}
+    us_range = safe("Fed de New York (fourchette)", S.nyfed_range)
 
     # ---------- 2. Inflation (BIS) ----------
     cpi = safe("BIS WS_LONG_CPI", S.bis_cpi_yoy, codes, start_hist[:7])
@@ -176,10 +176,14 @@ def main():
     fx = safe("BCE EXR", S.ecb_fx, ccys, iso(TODAY - dt.timedelta(days=400)))
     fx_series, fx_url = fx if fx else ({}, None)
 
-    # ---------- 4. Gouverneurs (Wikidata) ----------
-    gov = safe("Wikidata", S.wikidata_governors,
-               [c["wikidata_country"] for c in C if c.get("wikidata_country")],
-               [c["wikidata_org"] for c in C if c.get("wikidata_org")]) or {}
+    # ---------- 4. Taux à 10 ans (OCDE) ----------
+    y10 = safe("OCDE DF_FINMARK", S.oecd_10y, {c["oecd"] for c in C if c.get("oecd")},
+               (TODAY - dt.timedelta(days=500)).isoformat()[:7])
+    y10_series = y10[0] if y10 else {}
+
+    # ---------- 5. Gouverneurs (Wikidata) ----------
+    gov = safe("Wikidata", S.wikidata_governors, [],
+               [c["wikidata_bank"] for c in C if c.get("wikidata_bank")]) or {}
 
     out_countries = {}
     hist_out = {}
@@ -187,7 +191,7 @@ def main():
         code = c["code"]
         try:
             out_countries[code], hist_out[code] = build_country(
-                c, state, bis_rates, bis_url, official, us_range, cpi_series, cpi_url, gov)
+                c, state, bis_rates, bis_url, official, us_range, cpi_series, cpi_url, gov, y10_series)
         except Exception as e:  # noqa: BLE001  — un pays ne fait jamais tomber les autres
             traceback.print_exc()
             log(code, "robot", "pays entier", None, "ERREUR", f"{type(e).__name__}: {e}")
@@ -213,7 +217,8 @@ def main():
     missing = [f"{k}:{m}" for k, m in essentials
                if out_countries[k]["metrics"].get(m, {}).get("status") in ("nd", "pas_a_jour", None)]
     share = len(missing) / max(1, len(essentials))
-    atlas = {"generated_at": NOW, "as_of": iso(TODAY), "countries": out_countries,
+    changes = diff_changes(load_json(os.path.join(DATA, "atlas.json"), {}), out_countries)
+    atlas = {"generated_at": NOW, "as_of": iso(TODAY), "countries": out_countries, "changes": changes,
              "quality": {"missing": missing, "missing_share": round(share, 3)}}
     os.makedirs(DATA, exist_ok=True)
     dump(os.path.join(DATA, "atlas.json"), atlas)
@@ -229,6 +234,25 @@ def main():
     return 0
 
 
+def diff_changes(prev_atlas, now):
+    """Changements depuis le passage précédent : taux directeurs et nouvelles publications d'inflation."""
+    out = []
+    old = (prev_atlas or {}).get("countries", {})
+    if not old:
+        return out
+    for code, c in now.items():
+        o = old.get(code, {}).get("metrics", {})
+        p, po = c["metrics"].get("policy", {}), o.get("policy", {})
+        if p.get("value") is not None and po.get("value") is not None and abs(p["value"] - po["value"]) > 1e-9:
+            bp = round((p["value"] - po["value"]) * 100)
+            val = f"{p['value']:.2f}".replace(".", ",")
+            out.append(f"{c['name']} : taux directeur {'relevé' if bp > 0 else 'abaissé'} de {abs(bp)} pb, à {val} % (valeur du {p.get('date')}).")
+        i, io_ = c["metrics"].get("cpi", {}), o.get("cpi", {})
+        if i.get("date") and io_.get("date") and i["date"] > io_["date"] and i.get("value") is not None:
+            out.append(f"{c['name']} : inflation de {i['date']} publiée → {str(i['value']).replace('.', ',')} % (avant : {str(io_.get('value')).replace('.', ',')} %).")
+    return out
+
+
 def derived(value, parts, how):
     st = "ok"
     for p in parts:
@@ -238,7 +262,7 @@ def derived(value, parts, how):
             "date": max((p.get("date") or "") for p in parts) or None}
 
 
-def build_country(c, state, bis_rates, bis_url, official, us_range, cpi_series, cpi_url, gov):
+def build_country(c, state, bis_rates, bis_url, official, us_range, cpi_series, cpi_url, gov, y10_series):
     code = c["code"]
     metrics = {}
     hist = {}
@@ -266,8 +290,13 @@ def build_country(c, state, bis_rates, bis_url, official, us_range, cpi_series, 
     if series is None:
         series = [tuple(x) for x in state["history"].get(code, {}).get("policy", [])]
     metrics["policy"] = accept_metric("policy", code, cand, state)
-    if code == "US" and us_range and metrics["policy"].get("status") == "ok":
-        metrics["policy"]["range"] = [us_range[0], us_range[1]]
+    if code == "US" and us_range and metrics["policy"].get("value") is not None:
+        lo_, hi_, d_ = us_range
+        if abs((lo_ + hi_) / 2 - metrics["policy"]["value"]) < 0.01:
+            metrics["policy"]["range"] = [lo_, hi_]
+            metrics["policy"]["rate_note"] = f"Fourchette cible {lo_:.2f}–{hi_:.2f} % (Fed de New York, {d_}) ; valeur affichée = milieu de fourchette (convention BIS)."
+        else:
+            log(code, "Fed de New York", "fourchette", f"{lo_}-{hi_}", "ÉCART", "milieu différent du taux BIS : fourchette non affichée")
     if c.get("rate_note"):
         metrics["policy"]["rate_note"] = c["rate_note"]
     if series:
@@ -295,36 +324,60 @@ def build_country(c, state, bis_rates, bis_url, official, us_range, cpi_series, 
     metrics["cpi"] = accept_metric("cpi", code, cand, state, {"stale": c.get("cpi_stale_days", STALE["cpi"])})
 
     # --- 10 ans ---
-    if c.get("fred_10y"):
-        r = safe(f"FRED {c['fred_10y']}", S.fred, c["fred_10y"], iso(TODAY - dt.timedelta(days=800)))
-        cand = None
-        if r and r[0]:
-            d, v = r[0][-1]
-            cand = {"value": v, "date": d[:7], "source": "OCDE via FRED (moyenne mensuelle)",
-                    "series": c["fred_10y"], "url": f"https://fred.stlouisfed.org/series/{c['fred_10y']}"}
+    ys = y10_series.get(c.get("oecd"))
+    cand = None
+    if ys:
+        d, v = ys[-1]
+        cand = {"value": v, "date": d, "source": "OCDE (taux à long terme, moyenne mensuelle)",
+                "series": f"DF_FINMARK {c['oecd']}.M.IRLT",
+                "url": "https://data-explorer.oecd.org/vis?df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_STES%40DF_FINMARK&df[ag]=OECD.SDD.STES"}
+    if ys or state["good"].get(f"{code}:y10"):
         metrics["y10"] = accept_metric("y10", code, cand, state)
     else:
-        metrics["y10"] = {"value": None, "status": "nd", "note": "Pas de série gratuite fiable identifiée."}
+        metrics["y10"] = {"value": None, "status": "nd", "note": "Pas de série OCDE pour ce pays."}
 
     # --- cible + dérivées ---
     t = c.get("target")
     target = {"value": None, "status": "nd", "note": c.get("target_note")}
     if t:
-        target = {"value": t["value"], "label": t["label"], "url": t["url"], "source": "Site officiel de la banque centrale"}
+        target = {"value": t.get("value"), "label": t["label"], "url": t["url"], "source": "Site officiel de la banque centrale"}
         txt = safe(f"cible {code}", S.page_text, t["url"])
+        prev_t = state["good"].get(f"{code}:target")
         if txt:
-            norm = re.sub(r"\s+", " ", txt[0]).replace(" ", " ")
-            if t["check"] in norm or t["check"].replace(" ", "") in norm.replace(" ", ""):
+            norm = re.sub(r"\s+", " ", txt[0]).replace("\u00a0", " ")
+            if t.get("extract"):
+                mm = re.search(t["extract"], norm)
+                if mm:
+                    v = float(mm.group(1).replace(",", "."))
+                    if 0 < v < 20:
+                        target.update(value=v, label=t["label"].replace("{v}", f"{v:g}".replace(".", ",")), status="ok", checked=iso(TODAY))
+                        state["good"][f"{code}:target"] = {"value": v, "label": target["label"], "checked": iso(TODAY)}
+                        log(code, t["url"], "cible", v, "OK", "valeur lue sur la page officielle")
+                    else:
+                        mm = None
+                if not mm:
+                    if prev_t:
+                        target.update(value=prev_t["value"], label=prev_t["label"], status="a_verifier", checked=prev_t["checked"],
+                                      note="Valeur non relue aujourd'hui sur la page officielle : dernière valeur lue conservée.")
+                    else:
+                        target.update(value=None, label="n/d", status="nd")
+                    log(code, t["url"], "cible", target.get("value"), "À VÉRIFIER", "valeur introuvable sur la page")
+            elif t["check"] in norm or t["check"].replace(" ", "") in norm.replace(" ", ""):
                 target.update(status="ok", checked=iso(TODAY))
                 state["good"][f"{code}:target_checked"] = iso(TODAY)
-                log(code, t["url"], "cible", t["label"], "OK", "mention retrouvée sur la page officielle")
+                log(code, t["url"], "cible", t["label"], "OK", f"mention « {t['check']} » retrouvée sur la page officielle")
             else:
                 target.update(status="a_verifier", checked=state["good"].get(f"{code}:target_checked"),
-                              note="La page officielle ne contient plus la mention attendue : cible à revérifier.")
+                              note="La mention attendue n'a pas été retrouvée sur la page officielle : cible à revérifier.")
                 log(code, t["url"], "cible", t["label"], "À VÉRIFIER", "mention introuvable")
         else:
-            target.update(status="a_verifier", checked=state["good"].get(f"{code}:target_checked"),
+            if t.get("extract") and prev_t:
+                target.update(value=prev_t["value"], label=prev_t["label"])
+            elif t.get("extract"):
+                target.update(value=None, label="n/d")
+            target.update(status="a_verifier", checked=state["good"].get(f"{code}:target_checked") or (prev_t or {}).get("checked"),
                           note="Page officielle injoignable aujourd'hui.")
+            log(code, t["url"], "cible", target.get("value"), "À VÉRIFIER", "page injoignable")
     p, i = metrics["policy"], metrics["cpi"]
     if p.get("value") is not None and i.get("value") is not None:
         metrics["real"] = derived(p["value"] - i["value"], [p, i], "Taux directeur moins inflation sur un an")
@@ -336,8 +389,7 @@ def build_country(c, state, bis_rates, bis_url, official, us_range, cpi_series, 
         metrics["gap"] = {"value": None, "status": "nd"}
 
     # --- gouverneur ---
-    qid = c.get("wikidata_country") or c.get("wikidata_org")
-    governor = pick_governor(code, c, gov.get(qid), state)
+    governor = pick_governor(code, c, gov.get(c.get("wikidata_bank")), state)
 
     # --- réunions ---
     meetings = build_meetings(c, state, series)
@@ -346,35 +398,58 @@ def build_country(c, state, bis_rates, bis_url, official, us_range, cpi_series, 
              "governor": governor, "target": target, "metrics": metrics, "meetings": meetings}, hist)
 
 
+def _norm(t):
+    import unicodedata
+    t = unicodedata.normalize("NFKD", t)
+    return "".join(ch for ch in t if not unicodedata.combining(ch)).lower()
+
+
 def pick_governor(code, c, rows, state):
+    """Candidats Wikidata (mandats sans date de fin, du plus récent au plus ancien),
+    retenus seulement si le nom figure sur une page officielle de la banque centrale."""
     prev = state["governors"].get(code)
+    pages = []
+    for u in c.get("governor_check", []):
+        t = safe(f"page dirigeant {code}", S.page_text, u)
+        if t:
+            pages.append((u, _norm(t[0])))
     if rows:
-        # Plusieurs lignes possibles (plusieurs banques ou mandats) : on garde la plus récente
         rows = sorted(rows, key=lambda r: r.get("start") or "", reverse=True)
-        heads = {r["head"] for r in rows}
-        r = rows[0]
-        g = {"name": r["head"], "since": r.get("start"), "source": "Wikidata",
-             "url": f"https://www.wikidata.org/wiki/{r['head_qid']}", "bank_label": r.get("bank"),
-             "status": "ok", "checked": iso(TODAY)}
-        if len(heads) > 1:
-            g["note"] = "Plusieurs titulaires possibles dans Wikidata ; le mandat le plus récent est affiché."
-        if prev and prev.get("name") != g["name"]:
-            log(code, "Wikidata", "gouverneur", g["name"], "CHANGEMENT", f"précédent : {prev.get('name')}")
-        else:
-            log(code, "Wikidata", "gouverneur", g["name"], "OK")
-        state["governors"][code] = g
-        return g
+        seen = set()
+        for r in rows:
+            name = r.get("head") or ""
+            if name in seen or not name or name.startswith("Q"):
+                continue
+            seen.add(name)
+            toks = [t for t in re.split(r"[\s\-.,]+", _norm(name)) if len(t) >= 4]
+            hit = next((u for u, txt in pages if toks and any(re.search(r"\b" + re.escape(t) + r"\b", txt) for t in toks)), None)
+            if hit:
+                g = {"name": name, "since": r.get("start"), "source": "Wikidata, nom confirmé sur le site de la banque centrale",
+                     "url": f"https://www.wikidata.org/wiki/{r['head_qid']}", "check_url": hit, "status": "ok", "checked": iso(TODAY)}
+                if prev and prev.get("name") != name:
+                    log(code, "Wikidata + site officiel", "dirigeant", name, "CHANGEMENT", f"précédent : {prev.get('name')}")
+                else:
+                    log(code, "Wikidata + site officiel", "dirigeant", name, "OK", hit)
+                state["governors"][code] = g
+                return g
+        log(code, "Wikidata", "dirigeant", rows[0].get("head"), "NON CONFIRMÉ",
+            "nom absent des pages officielles vérifiées" if pages else "pages officielles injoignables")
+        if prev and not pages:
+            return dict(prev, status="pas_a_jour")
+        return {"name": None, "status": "nd", "note": "Nom non confirmé par une page officielle de la banque centrale."}
     if prev:
-        log(code, "Wikidata", "gouverneur", prev.get("name"), "GARDÉE", "pas de réponse aujourd'hui")
+        log(code, "Wikidata", "dirigeant", prev.get("name"), "GARDÉE", "pas de réponse aujourd'hui")
         return dict(prev, status="pas_a_jour")
-    log(code, "Wikidata", "gouverneur", None, "N/D")
+    log(code, "Wikidata", "dirigeant", None, "N/D")
     return {"name": None, "status": "nd"}
 
 
 def build_meetings(c, state, series):
     code = c["code"]
     if not c.get("calendar"):
-        return {"status": "aucun", "note": c.get("calendar_note")}
+        lc = last_change(series or [])
+        return {"status": "aucun", "note": c.get("calendar_note"),
+                "last_change": {"date": lc[0], "bp": round((lc[2] - lc[1]) * 100), "new": lc[2]} if lc else None}
     cal = c["calendar"]
     dates, err = None, None
     try:
@@ -401,6 +476,11 @@ def build_meetings(c, state, series):
     if past:
         last = past[-1]
         m["last"] = {"date": last, "decision": decision_at(series, last)}
+    if c.get("calendar_note"):
+        m["note"] = c["calendar_note"]
+    lc = last_change(series or [])
+    if lc:
+        m["last_change"] = {"date": lc[0], "bp": round((lc[2] - lc[1]) * 100), "new": lc[2]}
     return m
 
 

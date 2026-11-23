@@ -4,6 +4,9 @@ on:
     - cron: "17 5 * * *"    # vers 6 h 17 à Paris (heure d'hiver) : taux et inflation de la nuit
     - cron: "47 15 * * 1-5" # après le fixing BCE (vers 16 h à Francfort) : taux de change du jour
   workflow_dispatch:         # bouton « Run workflow » pour lancer à la main
+  push:                      # test sur la branche de développement uniquement
+    branches: [dev]
+    paths: ["robot/**", "config/**", ".github/workflows/daily.yml"]
 permissions:
   contents: write
 concurrency:
