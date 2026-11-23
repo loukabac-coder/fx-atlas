@@ -7,6 +7,7 @@
 - Tests sans réseau : `python -m unittest discover -s tests`.
 
 ## Reste à faire / idées
+- Australie : brancher l'IPC mensuel de l'ABS (la BIS ne donne que le trimestriel, daté de juin 2026). Contrôle croisé du 23/11 : 4,3 % en sept. 2026 selon l'ABS.
 - Calendriers non lisibles automatiquement : Pologne (anti-robot), Nouvelle-Zélande (403), réunions futures du Brésil.
 - Dirigeants non confirmés automatiquement : Mexique, Brésil, Pologne, Inde, Corée, Indonésie, Nouvelle-Zélande (n/d affiché).
 - Cibles « à vérifier » : Mexique, Brésil, Pologne, Nouvelle-Zélande (pages officielles illisibles par robot).

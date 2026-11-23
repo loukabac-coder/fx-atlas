@@ -495,7 +495,6 @@
    "wikidata_country": "Q408",
    "cb": "Reserve Bank of Australia (RBA)",
    "currency": "AUD",
-   "cpi_stale_days": 200,
    "target": {
     "value": 2.5,
     "label": "2–3 % (écart calculé au milieu, 2,5 %)",
@@ -510,7 +509,8 @@
    "governor_check": [
     "https://www.rba.gov.au/"
    ],
-   "oecd": "AUS"
+   "oecd": "AUS",
+   "cpi_note": "La BIS ne fournit qu'une série trimestrielle pour l'Australie, avec retard. L'ABS publie un IPC mensuel plus récent (non encore branché)."
   },
   {
    "code": "NZ",

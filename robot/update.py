@@ -328,6 +328,8 @@ def build_country(c, state, bis_rates, bis_url, official, us_range, cpi_series, 
         cut = (TODAY - dt.timedelta(days=365 * 3 + 31)).isoformat()[:7]
         hist["cpi"] = [[d, round(v, 2)] for d, v in cs if d >= cut]
     metrics["cpi"] = accept_metric("cpi", code, cand, state, {"stale": c.get("cpi_stale_days", STALE["cpi"])})
+    if c.get("cpi_note"):
+        metrics["cpi"]["note"] = (metrics["cpi"].get("note", "") + " " + c["cpi_note"]).strip()
 
     # --- 10 ans ---
     ys = y10_series.get(c.get("oecd"))
