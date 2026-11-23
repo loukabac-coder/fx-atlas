@@ -27,7 +27,7 @@ jobs:
         id: robot
         continue-on-error: true
         run: python robot/update.py
-      - name: Publier les données (même partielles : la dernière bonne valeur est toujours gardée)
+      - name: "Publier les données (même partielles, la dernière bonne valeur est toujours gardée)"
         run: |
           git config user.name "fx-atlas-robot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
