@@ -23,15 +23,15 @@ Données essentielles manquantes ou pas à jour : **0** (0%)
 | MX | cible | 3 % (±1 pt) | À VÉRIFIER | https://www.banxico.org.mx/ | mention introuvable |
 | MX | dirigeant | Victoria Rodríguez Ceja | NON CONFIRMÉ | Wikidata | pages officielles injoignables |
 | MX | calendrier | 8 dates | OK | https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-d |  |
-| BR | officiel = BIS | 13.75 | OK | contrôle BIS | au 2026-11-23 |
-| BR | policy | 13.75 | OK | Banco Central do Brasil | date 2026-11-23 |
+| BR | officiel = BIS | 13.75 | OK | contrôle BIS | au 2026-11-24 |
+| BR | policy | 13.75 | OK | Banco Central do Brasil | date 2026-11-24 |
 | BR | cpi | 4.58 | OK | BIS (indices de prix nationaux) | date 2026-09 |
 | BR | y10 | 9.29 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | BR | cible | 3 % (±1,5 pt) | À VÉRIFIER | https://www.bcb.gov.br/en/monetarypolicy/inflationtargeting | mention introuvable |
 | BR | dirigeant | Roberto Campos Neto | NON CONFIRMÉ | Wikidata | nom absent des pages officielles vérifiées |
 | BR | calendrier | 11 dates | OK | https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados |  |
-| XM | officiel = BIS | 2.5 | OK | contrôle BIS | au 2026-11-23 |
-| XM | policy | 2.5 | OK | BCE | date 2026-11-23 |
+| XM | officiel = BIS | 2.5 | OK | contrôle BIS | au 2026-11-24 |
+| XM | policy | 2.5 | OK | BCE | date 2026-11-24 |
 | XM | cpi | 3.77 | OK | BIS (indices de prix nationaux) | date 2026-09 |
 | XM | y10 | 4.173788 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | XM | cible | 2 % (IPCH, moyen terme) | OK | https://www.ecb.europa.eu/mopo/strategy/html/index.en.html | mention « aiming for 2% inflation » retrouvée sur la page officielle |
@@ -117,7 +117,7 @@ Données essentielles manquantes ou pas à jour : **0** (0%)
 | ID | cpi | 3.28 | OK | BIS (indices de prix nationaux) | date 2026-09 |
 | ID | cible | 2,5 % (±1 pt) | OK | https://www.bi.go.id/en/fungsi-utama/moneter/inflasi/default | mention « 2.5% » retrouvée sur la page officielle |
 | ID | dirigeant | n/d | N/D | Wikidata |  |
-| ID | calendrier | 12 dates | OK | https://www.bi.go.id/en/publikasi/kalender/default.aspx |  |
+| ID | calendrier | n/d | GARDÉ | https://www.bi.go.id/en/publikasi/kalender/default.aspx | FetchError: https://www.bi.go.id/en/publikasi/kalender/default.aspx -> Timeout: délai tota |
 | ID | policy | 5.75 | ANCIEN | BIS (Banque des règlements internationaux) | réunion du 2026-11-18 pas encore reflétée |
 | AU | policy | 4.85 | OK | BIS (Banque des règlements internationaux) | date 2026-11-12 |
 | AU | cpi | 3.94 | ANCIEN | BIS (indices de prix nationaux) | date 2026-06 |
