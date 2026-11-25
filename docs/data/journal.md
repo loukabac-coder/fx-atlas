@@ -23,8 +23,8 @@ Données essentielles manquantes ou pas à jour : **0** (0%)
 | MX | cible | 3 % (±1 pt) | À VÉRIFIER | https://www.banxico.org.mx/ | mention introuvable |
 | MX | dirigeant | Victoria Rodríguez Ceja | NON CONFIRMÉ | Wikidata | pages officielles injoignables |
 | MX | calendrier | 8 dates | OK | https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-d |  |
-| BR | officiel = BIS | 13.75 | OK | contrôle BIS | au 2026-11-24 |
-| BR | policy | 13.75 | OK | Banco Central do Brasil | date 2026-11-24 |
+| BR | officiel = BIS | 13.75 | OK | contrôle BIS | au 2026-11-25 |
+| BR | policy | 13.75 | OK | Banco Central do Brasil | date 2026-11-25 |
 | BR | cpi | 4.58 | OK | BIS (indices de prix nationaux) | date 2026-09 |
 | BR | y10 | 9.29 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | BR | cible | 3 % (±1,5 pt) | À VÉRIFIER | https://www.bcb.gov.br/en/monetarypolicy/inflationtargeting | mention introuvable |
