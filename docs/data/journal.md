@@ -88,7 +88,8 @@ Données essentielles manquantes ou pas à jour : **0** (0%)
 | ZA | cpi | 5.22 | OK | BIS (indices de prix nationaux) | date 2026-10 |
 | ZA | y10 | 8.94 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | ZA | cible | 3 % (±1 pt) | OK | https://www.resbank.co.za/en/home/what-we-do/monetary-policy | mention « inflation target is 3% » retrouvée sur la page officielle |
-| ZA | dirigeant | Lesetja Kganyago | OK | Wikidata + site officiel | https://www.resbank.co.za/en/home |
+| -- | téléchargement | n/d | ERREUR | page dirigeant ZA | FetchError: https://www.resbank.co.za/en/home -> HTTP 500 |
+| ZA | dirigeant | Lesetja Kganyago | NON CONFIRMÉ | Wikidata | pages officielles injoignables |
 | ZA | calendrier | 6 dates | OK | https://www.resbank.co.za/en/home/what-we-do/monetary-policy |  |
 | CN | policy | 3.0 | OK | BIS (Banque des règlements internationaux) | date 2026-11-19 |
 | CN | cpi | 0.7 | OK | BIS (indices de prix nationaux) | date 2026-10 |
