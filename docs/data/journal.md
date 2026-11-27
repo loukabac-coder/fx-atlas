@@ -10,8 +10,8 @@ Données essentielles manquantes ou pas à jour : **0** (0%)
 | US | cible | 2 % (PCE) | OK | https://www.federalreserve.gov/faqs/economy_14400.htm | mention « 2 percent » retrouvée sur la page officielle |
 | US | dirigeant | Kevin Warsh | OK | Wikidata + site officiel | https://www.federalreserve.gov/aboutthefed/bios/board/default.htm |
 | US | calendrier | 20 dates | OK | https://www.federalreserve.gov/monetarypolicy/fomccalendars. |  |
-| CA | officiel = BIS | 2.5 | OK | contrôle BIS | au 2026-11-25 |
-| CA | policy | 2.5 | OK | Banque du Canada | date 2026-11-25 |
+| CA | officiel = BIS | 2.5 | OK | contrôle BIS | au 2026-11-26 |
+| CA | policy | 2.5 | OK | Banque du Canada | date 2026-11-26 |
 | CA | cpi | 3.09 | OK | BIS (indices de prix nationaux) | date 2026-10 |
 | CA | y10 | 3.874762 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | CA | cible | 2 % (milieu de la fourchette 1–3 %) | OK | https://www.bankofcanada.ca/core-functions/monetary-policy/i | mention « 2 per cent midpoint » retrouvée sur la page officielle |
@@ -30,15 +30,15 @@ Données essentielles manquantes ou pas à jour : **0** (0%)
 | BR | cible | 3 % (±1,5 pt) | À VÉRIFIER | https://www.bcb.gov.br/en/monetarypolicy/inflationtargeting | mention introuvable |
 | BR | dirigeant | Roberto Campos Neto | NON CONFIRMÉ | Wikidata | nom absent des pages officielles vérifiées |
 | BR | calendrier | 11 dates | OK | https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados |  |
-| XM | officiel = BIS | 2.5 | OK | contrôle BIS | au 2026-11-26 |
-| XM | policy | 2.5 | OK | BCE | date 2026-11-26 |
+| XM | officiel = BIS | 2.5 | OK | contrôle BIS | au 2026-11-27 |
+| XM | policy | 2.5 | OK | BCE | date 2026-11-27 |
 | XM | cpi | 4.03 | OK | BIS (indices de prix nationaux) | date 2026-10 |
 | XM | y10 | 4.173788 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | XM | cible | 2 % (IPCH, moyen terme) | OK | https://www.ecb.europa.eu/mopo/strategy/html/index.en.html | mention « aiming for 2% inflation » retrouvée sur la page officielle |
 | XM | dirigeant | Christine Lagarde | OK | Wikidata + site officiel | https://www.ecb.europa.eu/ecb/orga/decisions/eb/html/index.en.html |
 | XM | calendrier | 18 dates | OK | https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.e |  |
-| GB | officiel = BIS | 4.0 | OK | contrôle BIS | au 2026-11-25 |
-| GB | policy | 4.0 | OK | Banque d'Angleterre | date 2026-11-25 |
+| GB | officiel = BIS | 4.0 | OK | contrôle BIS | au 2026-11-26 |
+| GB | policy | 4.0 | OK | Banque d'Angleterre | date 2026-11-26 |
 | GB | cpi | 3.65 | OK | BIS (indices de prix nationaux) | date 2026-10 |
 | GB | y10 | 5.3393 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | GB | cible | 2 % (IPC) | OK | https://www.bankofengland.co.uk/monetary-policy/inflation | mention « 2% target » retrouvée sur la page officielle |
@@ -129,23 +129,23 @@ Données essentielles manquantes ou pas à jour : **0** (0%)
 | -- | téléchargement | n/d | ERREUR | cible NZ | FetchError: https://www.rbnz.govt.nz/monetary-policy/about-monetary-policy/monetary-policy |
 | NZ | cible | 2 | À VÉRIFIER | https://www.rbnz.govt.nz/monetary-policy/about-monetary-poli | page injoignable |
 | NZ | dirigeant | Anna Breman | NON CONFIRMÉ | Wikidata | pages officielles injoignables |
-| FX | EUR/AUD | 1.654 | OK | BCE | date 2026-11-26 |
-| FX | EUR/BRL | 6.3272 | OK | BCE | date 2026-11-26 |
-| FX | EUR/CAD | 1.5617 | OK | BCE | date 2026-11-26 |
-| FX | EUR/CHF | 0.9153 | OK | BCE | date 2026-11-26 |
-| FX | EUR/CNY | 7.3096 | OK | BCE | date 2026-11-26 |
-| FX | EUR/CZK | 24.453 | OK | BCE | date 2026-11-26 |
-| FX | EUR/GBP | 0.83755 | OK | BCE | date 2026-11-26 |
-| FX | EUR/HUF | 372.23 | OK | BCE | date 2026-11-26 |
-| FX | EUR/IDR | 20187.03 | OK | BCE | date 2026-11-26 |
-| FX | EUR/INR | 101.464 | OK | BCE | date 2026-11-26 |
-| FX | EUR/JPY | 174.79 | OK | BCE | date 2026-11-26 |
-| FX | EUR/KRW | 1475.75 | OK | BCE | date 2026-11-26 |
-| FX | EUR/MXN | 21.5893 | OK | BCE | date 2026-11-26 |
-| FX | EUR/NOK | 10.718 | OK | BCE | date 2026-11-26 |
-| FX | EUR/NZD | 2.0033 | OK | BCE | date 2026-11-26 |
-| FX | EUR/PLN | 4.4838 | OK | BCE | date 2026-11-26 |
-| FX | EUR/SEK | 11.2025 | OK | BCE | date 2026-11-26 |
-| FX | EUR/TRY | 55.6177 | OK | BCE | date 2026-11-26 |
-| FX | EUR/USD | 1.0975 | OK | BCE | date 2026-11-26 |
-| FX | EUR/ZAR | 19.2646 | OK | BCE | date 2026-11-26 |
+| FX | EUR/AUD | 1.6431 | OK | BCE | date 2026-11-27 |
+| FX | EUR/BRL | 6.0246 | OK | BCE | date 2026-11-27 |
+| FX | EUR/CAD | 1.5608 | OK | BCE | date 2026-11-27 |
+| FX | EUR/CHF | 0.9157 | OK | BCE | date 2026-11-27 |
+| FX | EUR/CNY | 7.2912 | OK | BCE | date 2026-11-27 |
+| FX | EUR/CZK | 24.435 | OK | BCE | date 2026-11-27 |
+| FX | EUR/GBP | 0.83504 | OK | BCE | date 2026-11-27 |
+| FX | EUR/HUF | 369.73 | OK | BCE | date 2026-11-27 |
+| FX | EUR/IDR | 20136.83 | OK | BCE | date 2026-11-27 |
+| FX | EUR/INR | 101.904 | OK | BCE | date 2026-11-27 |
+| FX | EUR/JPY | 174.81 | OK | BCE | date 2026-11-27 |
+| FX | EUR/KRW | 1462.65 | OK | BCE | date 2026-11-27 |
+| FX | EUR/MXN | 21.3794 | OK | BCE | date 2026-11-27 |
+| FX | EUR/NOK | 10.685 | OK | BCE | date 2026-11-27 |
+| FX | EUR/NZD | 1.999 | OK | BCE | date 2026-11-27 |
+| FX | EUR/PLN | 4.4678 | OK | BCE | date 2026-11-27 |
+| FX | EUR/SEK | 11.208 | OK | BCE | date 2026-11-27 |
+| FX | EUR/TRY | 55.6474 | OK | BCE | date 2026-11-27 |
+| FX | EUR/USD | 1.0957 | OK | BCE | date 2026-11-27 |
+| FX | EUR/ZAR | 18.9949 | OK | BCE | date 2026-11-27 |
