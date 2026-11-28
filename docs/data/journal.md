@@ -23,15 +23,15 @@ Données essentielles manquantes ou pas à jour : **0** (0%)
 | MX | cible | 3 % (±1 pt) | À VÉRIFIER | https://www.banxico.org.mx/ | mention introuvable |
 | MX | dirigeant | Victoria Rodríguez Ceja | NON CONFIRMÉ | Wikidata | pages officielles injoignables |
 | MX | calendrier | 8 dates | OK | https://www.banxico.org.mx/publicaciones-y-prensa/anuncios-d |  |
-| BR | officiel = BIS | 13.75 | OK | contrôle BIS | au 2026-11-27 |
-| BR | policy | 13.75 | OK | Banco Central do Brasil | date 2026-11-27 |
+| BR | officiel = BIS | 13.75 | OK | contrôle BIS | au 2026-11-28 |
+| BR | policy | 13.75 | OK | Banco Central do Brasil | date 2026-11-28 |
 | BR | cpi | 4.63 | OK | BIS (indices de prix nationaux) | date 2026-10 |
 | BR | y10 | 9.29 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | BR | cible | 3 % (±1,5 pt) | À VÉRIFIER | https://www.bcb.gov.br/en/monetarypolicy/inflationtargeting | mention introuvable |
 | BR | dirigeant | Roberto Campos Neto | NON CONFIRMÉ | Wikidata | nom absent des pages officielles vérifiées |
 | BR | calendrier | 11 dates | OK | https://www.bcb.gov.br/api/servico/sitebcb/copom/comunicados |  |
-| XM | officiel = BIS | 2.5 | OK | contrôle BIS | au 2026-11-27 |
-| XM | policy | 2.5 | OK | BCE | date 2026-11-27 |
+| XM | officiel = BIS | 2.5 | OK | contrôle BIS | au 2026-11-28 |
+| XM | policy | 2.5 | OK | BCE | date 2026-11-28 |
 | XM | cpi | 4.03 | OK | BIS (indices de prix nationaux) | date 2026-10 |
 | XM | y10 | 4.173788 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | XM | cible | 2 % (IPCH, moyen terme) | OK | https://www.ecb.europa.eu/mopo/strategy/html/index.en.html | mention « aiming for 2% inflation » retrouvée sur la page officielle |
@@ -58,7 +58,7 @@ Données essentielles manquantes ou pas à jour : **0** (0%)
 | SE | calendrier | 6 dates | OK | https://www.riksbank.se/en-gb/press-and-published/calendar/ |  |
 | NO | policy | 4.5 | OK | BIS (Banque des règlements internationaux) | date 2026-11-19 |
 | NO | cpi | 3.57 | OK | BIS (indices de prix nationaux) | date 2026-10 |
-| NO | y10 | 4.433045 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
+| NO | y10 | 4.187333 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-11 |
 | NO | cible | 2 % (IPC) | OK | https://www.norges-bank.no/en/topics/Monetary-policy/Mandate | mention « close to 2 percent » retrouvée sur la page officielle |
 | NO | dirigeant | Ida Wolden Bache | OK | Wikidata + site officiel | https://www.norges-bank.no/en/topics/about/Organisation/The-Executive-Board/ |
 | NO | calendrier | 9 dates | OK | https://www.norges-bank.no/en/news-events/calendar/policy-ra |  |
@@ -88,8 +88,7 @@ Données essentielles manquantes ou pas à jour : **0** (0%)
 | ZA | cpi | 5.22 | OK | BIS (indices de prix nationaux) | date 2026-10 |
 | ZA | y10 | 8.94 | OK | OCDE (taux à long terme, moyenne mensuelle) | date 2026-10 |
 | ZA | cible | 3 % (±1 pt) | OK | https://www.resbank.co.za/en/home/what-we-do/monetary-policy | mention « inflation target is 3% » retrouvée sur la page officielle |
-| -- | téléchargement | n/d | ERREUR | page dirigeant ZA | FetchError: https://www.resbank.co.za/en/home -> HTTP 500 |
-| ZA | dirigeant | Lesetja Kganyago | NON CONFIRMÉ | Wikidata | pages officielles injoignables |
+| ZA | dirigeant | Lesetja Kganyago | OK | Wikidata + site officiel | https://www.resbank.co.za/en/home |
 | ZA | calendrier | 6 dates | OK | https://www.resbank.co.za/en/home/what-we-do/monetary-policy |  |
 | CN | policy | 3.0 | OK | BIS (Banque des règlements internationaux) | date 2026-11-19 |
 | CN | cpi | 0.7 | OK | BIS (indices de prix nationaux) | date 2026-10 |
@@ -113,6 +112,7 @@ Données essentielles manquantes ou pas à jour : **0** (0%)
 | KR | cible | 2 % (IPC) | OK | https://www.bok.or.kr/eng/main/contents.do?menuNo=400015 | mention « 2 percent » retrouvée sur la page officielle |
 | KR | dirigeant | Rhee Changyong | NON CONFIRMÉ | Wikidata | nom absent des pages officielles vérifiées |
 | KR | calendrier | 11 dates | OK | https://www.bok.or.kr/eng/main/contents.do?menuNo=400020 |  |
+| KR | policy | 3.0 | ANCIEN | BIS (Banque des règlements internationaux) | réunion du 2026-11-26 pas encore reflétée |
 | ID | policy | 6.0 | OK | BIS (Banque des règlements internationaux) | date 2026-11-19 |
 | ID | cpi | 3.23 | OK | BIS (indices de prix nationaux) | date 2026-10 |
 | ID | cible | 2,5 % (±1 pt) | OK | https://www.bi.go.id/en/fungsi-utama/moneter/inflasi/default | mention « 2.5% » retrouvée sur la page officielle |
